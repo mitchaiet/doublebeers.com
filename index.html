@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Double Beers · Tilt to drink. Tap to refill.</title>
+<meta name="description" content="Double Beers turns your whole screen into a glass of beer. Tilt to drink, tap to refill. On iPhone Duo it's two beers, one for you and one for a friend. Free, no ads, no tracking.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#070504">
+<link rel="canonical" href="https://doublebeers.com/">
+<meta name="apple-itunes-app" content="app-id=6824046542">
+<meta name="apple-mobile-web-app-title" content="Double Beers">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Double Beers">
+<meta property="og:url" content="https://doublebeers.com/">
+<meta property="og:title" content="Double Beers · Tilt to drink. Tap to refill.">
+<meta property="og:description" content="Tired of only drinking one beer? Now you can drink two. A glass of beer for iPhone, and two on iPhone Duo.">
+<meta property="og:image" content="https://doublebeers.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Double Beers: an iPhone with one beer and an open iPhone Duo with two beers.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Double Beers · Tilt to drink. Tap to refill.">
+<meta name="twitter:description" content="Tired of only drinking one beer? Now you can drink two. Free for iPhone, iPad and iPhone Duo.">
+<meta name="twitter:image" content="https://doublebeers.com/og-image.png">
+<meta name="twitter:image:alt" content="Double Beers: an iPhone with one beer and an open iPhone Duo with two beers.">
+
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" as="image" href="/media/poster-16x9.jpg" media="not all and (max-width: 700px) and (orientation: portrait)" fetchpriority="high">
+<link rel="preload" as="image" href="/media/poster-9x16.jpg" media="(max-width: 700px) and (orientation: portrait)" fetchpriority="high">
+<link rel="preload" href="/assets/db-rounded.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Double Beers",
+  "url": "https://doublebeers.com/",
+  "image": "https://doublebeers.com/og-image.png",
+  "description": "The whole screen is a glass of beer. Tilt to drink, tap to refill. On iPhone Duo, two beers: one for you and one for a friend. A toy for adults: no real beer, no alcohol.",
+  "operatingSystem": "iOS 18, iPadOS 18",
+  "applicationCategory": "EntertainmentApplication",
+  "contentRating": "18+",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Person", "name": "Mitch Chaiet" }
+}
+</script>
+<style>
+  /* ---------- Hero ---------- */
+  main { overflow-x: clip; }
+  /* Flex column, so on phones the film can move up between the title and the pitch. */
+  .hero { position: relative; isolation: isolate; display: flex; flex-direction: column; padding: clamp(34px, 6vh, 64px) 0 0; text-align: center; background: var(--bg); }
+  .hero .wrap { position: relative; z-index: 1; }
+  .hero::before {
+    content: ""; position: absolute; z-index: -1; left: 50%; top: -120px; width: min(1500px, 140vw); height: 1100px; transform: translateX(-50%);
+    background:
+      radial-gradient(42% 30% at 50% 22%, rgba(245, 180, 60, .14), transparent 72%),
+      radial-gradient(38% 34% at 50% 70%, rgba(214, 128, 24, .16), transparent 70%);
+    pointer-events: none;
+  }
+  .display {
+    margin: 0; color: var(--cream-hi);
+    font: 860 clamp(56px, 7.8vw, 112px)/.92 var(--round); letter-spacing: -0.04em;
+  }
+  .display .gold { color: var(--gold); text-shadow: 0 0 60px rgba(245, 180, 60, .35); }
+  .hero-sub { margin: 18px 0 0; color: var(--cream); font: 760 clamp(23px, 2.6vw, 34px)/1.15 var(--round); letter-spacing: -0.015em; }
+  .lede { max-width: 700px; margin: 14px auto 0; text-wrap: balance; color: var(--muted); font-size: clamp(17px, 1.4vw, 19.5px); line-height: 1.55; }
+  .cta-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 14px; margin-top: 28px; }
+  .fine { margin: 14px 0 0; color: var(--muted); font: 600 14px/1.4 var(--round); letter-spacing: .01em; text-wrap: balance; }
+  .fine .nw { white-space: nowrap; }
+  .fine .sep { color: rgba(245, 180, 60, .7); margin: 0 .2em; }
+  /* Phones: two tidy lines instead of a wrap that strands a separator. */
+  .fine .brk { display: none; }
+  @media (max-width: 700px) { .fine .sep-brk { display: none; } .fine .brk { display: block; } }
+  .fine a { color: inherit; text-decoration: underline; text-decoration-color: rgba(245, 180, 60, .55); }
+  .fine a:hover { color: var(--cream-hi); }
+
+  /* The film: masked so its black melts into the page. */
+  /* The film's black is blended away (lighten) so it sits in the page glow with no box; its empty top tucks under the copy. */
+  .film { position: relative; width: min(100%, 1160px); margin: -104px auto 0; aspect-ratio: 16 / 9; pointer-events: none; }
+  .film-media, .film video { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .film-media img, .film video {
+    width: 100%; height: 100%; object-fit: cover;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent), linear-gradient(to bottom, transparent, #000 7%, #000 95%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent), linear-gradient(to bottom, transparent, #000 7%, #000 95%, transparent);
+    mask-composite: intersect;
+    mix-blend-mode: lighten;
+  }
+  /* Hand-off from poster to video. Both layers blend with lighten, so the poster has to go once the video shows,
+     or its captions and devices show through for the whole loop. The posters are frame 0 of each loop and
+     .has-played lands on the first painted frame, so a quick swap is seamless (a slow one would double the moving
+     devices). pick() drops .has-played on a source change, which brings the poster back. */
+  .film video { opacity: 0; transition: opacity .15s linear; background: transparent; }
+  .film.has-played video { opacity: 1; }
+  .film-media img { transition: opacity .2s linear .1s; }
+  .film.has-played .film-media img { opacity: 0; }
+  /* Under the film's captions (they're centred on x = 27%): a spot the devices never reach, and still in the fold at 1440x900 and 1024x768. */
+  .film-controls { position: absolute; z-index: 2; left: 27%; bottom: 24%; transform: translateX(-50%); display: flex; gap: 8px; pointer-events: auto; }
+  .film-btn {
+    display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%;
+    background: rgba(20, 15, 10, .55); color: var(--cream); cursor: pointer;
+    -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+    box-shadow: inset 0 0 0 1px rgba(235, 225, 205, .18);
+    transition: background-color .2s var(--ease), color .2s var(--ease);
+  }
+  .film-btn:hover { background: rgba(245, 180, 60, .9); color: var(--ink); }
+  .film-btn svg { width: 18px; height: 18px; }
+  .film-btn .i-on, .film-btn .i-off { display: none; }
+  .film-btn[aria-pressed="true"] .i-on, .film-btn[aria-pressed="false"] .i-off { display: block; }
+
+  @media (max-width: 700px) and (orientation: portrait) {
+    /* Phones: the beer comes first. Title, then the film, then the pitch and the button. */
+    .hero { padding-top: 28px; }
+    .film { order: 1; aspect-ratio: 9 / 16; width: calc(100% + 2 * var(--gutter)); margin: -36px calc(-1 * var(--gutter)) 0; }
+    .hero-cta { order: 2; margin-top: -28px; }
+    .film-media img, .film video {
+      -webkit-mask-image: linear-gradient(to bottom, transparent, #000 6%, #000 94%, transparent);
+      mask-image: linear-gradient(to bottom, transparent, #000 6%, #000 94%, transparent);
+    }
+    /* Centred in the dark strip under the devices (the 9:16 film is empty below 84%), so they're in the fold at 844px. */
+    .film-controls { bottom: 9%; left: 50%; }
+  }
+
+  /* ---------- Features ---------- */
+  .rule { height: 1px; border: 0; margin: 0; background: linear-gradient(90deg, transparent, rgba(245, 180, 60, .28), transparent); }
+  .feature {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center;
+    gap: clamp(40px, 7vw, 112px); padding: clamp(80px, 11vw, 150px) 0;
+  }
+  .feature.flip .feature-media { order: 2; }
+  .feature-media { position: relative; display: grid; place-items: center; min-height: 560px; isolation: isolate; }
+  .feature-media::before {
+    content: ""; position: absolute; z-index: -1; inset: 4% -6%;
+    background: radial-gradient(closest-side, rgba(245, 180, 60, .2), rgba(245, 180, 60, .06) 55%, transparent);
+  }
+  .kicker { display: flex; align-items: center; gap: 12px; margin: 0; color: var(--gold); font: 750 13px/1 var(--round); letter-spacing: .16em; text-transform: uppercase; }
+  .kicker .num {
+    display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 50%;
+    box-shadow: inset 0 0 0 1px rgba(245, 180, 60, .45); font-size: 12px; letter-spacing: .02em; color: var(--gold);
+  }
+  .feature h2, .section-head h2 {
+    margin: 20px 0 0; color: var(--cream-hi);
+    font: 830 clamp(38px, 4.6vw, 62px)/1.02 var(--round); letter-spacing: -0.032em; text-wrap: balance;
+  }
+  .body { max-width: 540px; margin: 22px 0 0; color: var(--muted); font-size: clamp(17px, 1.35vw, 19px); line-height: 1.6; }
+  .body strong { color: var(--cream); font-weight: 650; }
+  .ticks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 26px; max-width: 560px; margin: 30px 0 0; padding: 0; list-style: none; }
+  .ticks li { position: relative; padding-left: 26px; color: var(--cream); font-size: 16px; line-height: 1.45; }
+  .ticks li b { color: var(--cream-hi); font-weight: 680; }
+  .ticks li::before {
+    content: ""; position: absolute; left: 0; top: .38em; width: 12px; height: 12px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 32%, #FFE6AE, var(--gold) 55%, var(--gold-deep));
+    box-shadow: 0 0 10px rgba(245, 180, 60, .5);
+  }
+
+  /* Device frames (drawn in CSS around plain screen captures). */
+  .phone {
+    position: relative; width: min(300px, 68vw); aspect-ratio: 1206 / 2622; padding: 10px; border-radius: 54px;
+    background: linear-gradient(150deg, #47423b 0%, #1a1714 22%, #0d0b09 60%, #2a2622 100%);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, .16), inset 0 0 0 3px #060504,
+      0 50px 90px -40px rgba(0, 0, 0, .95), 0 30px 120px -40px rgba(245, 180, 60, .4);
+  }
+  .phone img { width: 100%; height: 100%; object-fit: cover; border-radius: 44px; background: #000; }
+  .phone::after { content: ""; position: absolute; top: 22px; left: 50%; width: 31%; height: 27px; border-radius: 20px; background: #000; transform: translateX(-50%); }
+  .phone::before { content: ""; position: absolute; left: -3px; top: 23%; width: 4px; height: 9%; border-radius: 3px 0 0 3px; background: #2c2824; }
+  /* The capture is mid-drink with the phone tipped back about 114 degrees; turn the frame the same way so the beer sits level. */
+  /* Rotating doesn't change the layout box (W x 2.17W), but the turned phone is only 1.8W tall: pull the margins in to match. */
+  .phone.tilt { width: min(236px, 38vw); margin-block: calc(min(236px, 38vw) * -0.188); transform: rotate(-114deg); }
+  #tilt .feature-media { min-height: 0; padding: 40px 0; }
+
+  .duo-stage { width: min(100%, 580px); }
+  .duo {
+    position: relative; width: 100%; aspect-ratio: 2853 / 2007; padding: 11px; border-radius: 42px;
+    background: linear-gradient(150deg, #4a453e 0%, #1a1714 24%, #0d0b09 62%, #2c2824 100%);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, .16), inset 0 0 0 3px #060504,
+      0 50px 90px -40px rgba(0, 0, 0, .95), 0 30px 120px -30px rgba(245, 180, 60, .42);
+  }
+  .duo img { width: 100%; height: 100%; object-fit: cover; border-radius: 32px; background: #000; }
+  .duo::after {
+    content: ""; position: absolute; top: 11px; bottom: 11px; left: 50%; width: 2px; transform: translateX(-50%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .38) 30%, rgba(0, 0, 0, .38) 70%, rgba(0, 0, 0, .1));
+  }
+  .duo-labels { display: grid; grid-template-columns: 1fr 1fr; margin: 26px 0 0; padding: 0; list-style: none; text-align: center; }
+  .duo-labels b { display: block; color: var(--cream-hi); font: 760 17px/1.2 var(--round); }
+  .duo-labels span { color: var(--muted); font: 600 14px/1.4 var(--round); }
+  .duo-labels li:last-child b { color: var(--gold); }
+
+  .stage { position: relative; }
+  .notif {
+    position: absolute; z-index: 2; top: -7%; left: -30%; width: 292px; display: flex; gap: 12px; align-items: center;
+    padding: 13px 16px 13px 13px; border-radius: 24px; text-align: left;
+    background: rgba(48, 41, 34, .7); -webkit-backdrop-filter: blur(22px) saturate(170%); backdrop-filter: blur(22px) saturate(170%);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1), 0 24px 60px -18px rgba(0, 0, 0, .9);
+  }
+  .notif img { width: 40px; height: 40px; border-radius: 22.5%; flex: none; }
+  .notif .app { display: flex; justify-content: space-between; margin: 0; color: rgba(235, 225, 205, .7); font: 600 11.5px/1.2 var(--text); letter-spacing: .05em; text-transform: uppercase; }
+  .notif .msg { margin: 3px 0 0; color: var(--cream-hi); font: 600 15px/1.3 var(--text); }
+  .chip {
+    position: absolute; z-index: 2; left: 78%; top: 77%; transform: translate(-50%, -50%); white-space: nowrap; display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 20px; border-radius: 999px; color: var(--ink); font: 820 18px/1 var(--round);
+    background: linear-gradient(180deg, #FFD887, var(--gold) 50%, #E29A22);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .55), 0 20px 40px -14px rgba(245, 180, 60, .7);
+  }
+  .chip svg { width: 18px; height: 18px; }
+  /* Two columns: keep the banner inside the page gutter (the column is the container). */
+  #refill .feature-media { container-type: inline-size; }
+  @media (min-width: 901px) { .notif { left: max(-30%, calc((300px - 100cqw) / 2)); } }
+
+  .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; max-width: 580px; margin: 30px 0 0; padding: 0; list-style: none; }
+  .facts li { padding: 16px 16px 15px; border-radius: 18px; background: var(--card); box-shadow: inset 0 0 0 1px var(--hair); }
+  .facts b { display: block; color: var(--gold); font: 780 15.5px/1.2 var(--round); }
+  .facts span { display: block; margin-top: 6px; color: var(--muted); font-size: 14px; line-height: 1.4; }
+  .aside { max-width: 540px; margin: 22px 0 0; color: var(--muted); font-size: 14.5px; }
+
+  /* ---------- Six styles ---------- */
+  .styles { padding: clamp(80px, 11vw, 150px) 0; text-align: center; }
+  .section-head { max-width: 720px; margin: 0 auto; }
+  .section-head .kicker { justify-content: center; }
+  .section-head .body { margin-left: auto; margin-right: auto; }
+  .style-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; margin: 60px 0 0; padding: 0; list-style: none; }
+  .style {
+    padding: 30px 14px 24px; border-radius: 28px;
+    background: linear-gradient(180deg, rgba(235, 225, 205, .055), rgba(235, 225, 205, .012));
+    box-shadow: inset 0 0 0 1px rgba(235, 225, 205, .08);
+    transition: transform .45s var(--ease), box-shadow .45s var(--ease);
+  }
+  .style:hover { transform: translateY(-6px); box-shadow: inset 0 0 0 1px rgba(245, 180, 60, .32), 0 30px 60px -30px rgba(245, 180, 60, .45); }
+  .style-glass { width: 70%; margin: 0 auto; filter: drop-shadow(0 22px 18px rgba(0, 0, 0, .55)); }
+  .style h3 { margin: 22px 0 0; color: var(--cream-hi); font: 760 18px/1.2 var(--round); letter-spacing: -0.01em; }
+  .style p { margin: 6px 0 0; color: var(--muted); font-size: 14px; line-height: 1.4; }
+  .bub { animation: rise var(--d) linear var(--dl) infinite; }
+  @keyframes rise {
+    0% { transform: translateY(var(--from)); opacity: 0; }
+    12% { opacity: 1; }
+    86% { opacity: 1; }
+    100% { transform: translateY(var(--to)); opacity: 0; }
+  }
+
+  .tweaks { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin: 16px 0 0; padding: 0; list-style: none; text-align: left; }
+  .tweak { padding: 22px 22px 24px; border-radius: 24px; background: var(--card); box-shadow: inset 0 0 0 1px var(--hair); }
+  .tweak h3 { margin: 0; color: var(--cream-hi); font: 760 17px/1.2 var(--round); }
+  .tweak p { margin: 6px 0 0; color: var(--muted); font-size: 14.5px; line-height: 1.45; }
+  .ui { margin-top: 18px; }
+  .track { position: relative; height: 6px; border-radius: 3px; background: rgba(235, 225, 205, .14); }
+  .track i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 3px; background: linear-gradient(90deg, var(--gold-deep), var(--gold)); }
+  .track i::after { content: ""; position: absolute; right: -11px; top: 50%; width: 22px; height: 22px; border-radius: 50%; transform: translateY(-50%); background: #fff; box-shadow: 0 2px 8px rgba(0, 0, 0, .5); }
+  .ends { display: flex; justify-content: space-between; margin-top: 12px; color: rgba(235, 225, 205, .66); font: 600 12px/1 var(--round); }
+  .seg { display: grid; grid-template-columns: repeat(3, 1fr); padding: 3px; border-radius: 11px; background: rgba(235, 225, 205, .1); }
+  .seg span { padding: 7px 0; border-radius: 8px; text-align: center; color: var(--muted); font: 650 12.5px/1 var(--round); }
+  .seg .on { background: rgba(235, 225, 205, .2); color: var(--cream-hi); }
+  .switch { display: flex; align-items: center; justify-content: space-between; color: var(--muted); font: 600 13px/1 var(--round); }
+  .switch i { position: relative; width: 46px; height: 28px; border-radius: 14px; background: var(--gold); }
+  .switch i::after { content: ""; position: absolute; right: 2px; top: 2px; width: 24px; height: 24px; border-radius: 50%; background: #fff; box-shadow: 0 2px 6px rgba(0, 0, 0, .35); }
+
+  /* ---------- Promise + finale ---------- */
+  .promise { padding: clamp(70px, 9vw, 120px) 0; text-align: center; }
+  .promise h2 { margin: 0; color: var(--cream-hi); text-wrap: balance; font: 840 clamp(36px, 5.4vw, 72px)/1 var(--round); letter-spacing: -0.035em; }
+  .promise p { max-width: 600px; margin: 20px auto 0; color: var(--muted); font-size: clamp(17px, 1.4vw, 19px); }
+
+  .finale { position: relative; isolation: isolate; padding: clamp(80px, 10vw, 140px) 0 clamp(90px, 11vw, 150px); text-align: center; overflow: hidden; }
+  /* Sized to the section, so the glow fades out before the top and bottom edges instead of being cut off. */
+  .finale::before {
+    content: ""; position: absolute; z-index: -1; left: 50%; top: 0; bottom: 0; width: min(1100px, 220vw); transform: translateX(-50%);
+    background: radial-gradient(closest-side, rgba(245, 180, 60, .2), rgba(214, 128, 24, .07) 55%, transparent);
+  }
+  .finale-icon { width: 128px; height: 128px; margin: 0 auto; border-radius: 22.5%; box-shadow: 0 0 0 1px rgba(255, 255, 255, .1), 0 30px 80px -18px rgba(245, 180, 60, .75); }
+  .finale .q { margin: 34px 0 0; color: var(--cream); font: 760 clamp(21px, 2.2vw, 28px)/1.2 var(--round); letter-spacing: -0.01em; }
+  .finale h2 { margin: 10px 0 0; color: var(--cream-hi); font: 860 clamp(44px, 7vw, 96px)/.96 var(--round); letter-spacing: -0.04em; text-wrap: balance; }
+  .finale .cta-row { margin-top: 38px; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1080px) {
+    .style-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .tweaks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 900px) {
+    .feature { grid-template-columns: minmax(0, 1fr); gap: 40px; text-align: left; }
+    .feature.flip .feature-media { order: 0; }
+    .feature-media { min-height: 0; padding: 30px 0 10px; }
+    .notif { left: -22%; }
+  }
+  @media (max-width: 560px) {
+    .ticks { grid-template-columns: minmax(0, 1fr); }
+    .facts { grid-template-columns: minmax(0, 1fr); }
+    .style-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 44px; }
+    .style { padding: 24px 10px 20px; border-radius: 24px; }
+    .tweaks { grid-template-columns: minmax(0, 1fr); }
+    .phone { width: min(260px, 66vw); border-radius: 46px; padding: 9px; }
+    .phone img { border-radius: 38px; }
+    .phone::after { top: 19px; height: 23px; }
+    .notif { width: 262px; left: -12%; top: -8%; padding: 11px 13px 11px 11px; }
+    .notif .msg { font-size: 14px; }
+    .chip { padding: 11px 16px; font-size: 16px; }
+    .duo { padding: 8px; border-radius: 30px; }
+    .duo img { border-radius: 23px; }
+    .duo::after { top: 8px; bottom: 8px; }
+    .hero-sub { margin-top: 14px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bub { animation: none; }
+    .style:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" id="top">
+  <nav class="nav wrap" aria-label="Main">
+    <a class="brand" href="/" aria-label="Double Beers home"><img src="/media/app-icon.webp" width="34" height="34" alt=""><span>Double Beers</span></a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="/support/">Support</a></li>
+      <li><a href="/privacy/">Privacy</a></li>
+    </ul>
+    <a class="btn btn-sm" href="https://testflight.apple.com/join/3u9vCuNe">Join the beta</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <h1 class="display" id="hero-title">Double <span class="gold">Beers</span></h1>
+      <p class="hero-sub">Tilt to drink. Tap to refill.</p>
+    </div>
+
+    <!-- Before the film in the source (keyboard and reading order); on phones CSS moves it below the film (.hero is a flex column). -->
+    <div class="wrap hero-cta">
+      <!-- iPad: 1.0 is an iPhone build, so iPad gets one beer. If the universal iPad build (ipad-plan.md) ships, say "On iPhone Duo and iPad" here,
+           in the meta description, og:description, JSON-LD, feature 02's kicker and ticks, and on /support/. -->
+      <p class="lede">The whole screen is a glass of beer. On iPhone Duo it&rsquo;s two: one for you, one for a friend.</p>
+      <div class="cta-row">
+        <a class="btn" href="https://testflight.apple.com/join/3u9vCuNe">
+          Join the beta
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4.5-5L15 10l-4.5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <!-- APP STORE BADGE SLOT (hidden until Double Beers is live on the App Store).
+             To launch: delete the `hidden` attribute on this link (and on the one in the finale below).
+             The link already points at https://apps.apple.com/app/id6824046542.
+             Optional: replace the text inside with Apple's official badge artwork, e.g.
+             <img src="/media/app-store-badge.svg" width="162" height="54" alt="Download on the App Store">
+             (download it from https://developer.apple.com/app-store/marketing/guidelines/). -->
+        <a class="btn btn-ghost appstore-badge" href="https://apps.apple.com/app/id6824046542" data-slot="app-store" hidden>Download on the App Store</a>
+      </div>
+      <p class="fine"><span class="nw">Free beta on TestFlight</span> <span class="sep" aria-hidden="true">&middot;</span> <a class="nw" href="/support/#age-rating">Rated 18+</a> <span class="sep sep-brk" aria-hidden="true">&middot;</span><span class="brk"></span> <span class="nw">No ads</span> <span class="sep" aria-hidden="true">&middot;</span> <span class="nw">No tracking</span></p>
+    </div>
+
+    <figure class="film" id="film">
+      <picture class="film-media">
+        <source media="(max-width: 700px) and (orientation: portrait)" srcset="/media/poster-9x16.jpg" width="1080" height="1920">
+        <img src="/media/poster-16x9.jpg" width="1920" height="1080" fetchpriority="high"
+             alt="A closed iPhone Duo holding one glass of beer, under the line &ldquo;Tired of only drinking one beer?&rdquo;">
+      </picture>
+      <video muted loop playsinline preload="metadata" disablepictureinpicture disableremoteplayback
+             aria-label="Double Beers launch film"
+             data-wide="/media/double-beers-16x9-loop.mp4" data-tall="/media/double-beers-9x16-720.mp4" data-tall-hevc="/media/double-beers-9x16-hevc.mp4"
+             data-poster-wide="/media/poster-16x9.jpg" data-poster-tall="/media/poster-9x16.jpg"></video>
+      <div class="film-controls">
+        <button class="film-btn" type="button" data-act="play" aria-pressed="false" aria-label="Play the film">
+          <svg class="i-on" viewBox="0 0 20 20" aria-hidden="true"><rect x="5" y="4" width="3.4" height="12" rx="1.2" fill="currentColor"/><rect x="11.6" y="4" width="3.4" height="12" rx="1.2" fill="currentColor"/></svg>
+          <svg class="i-off" viewBox="0 0 20 20" aria-hidden="true"><path d="M6.5 4.2v11.6c0 .8.9 1.3 1.6.8l8.6-5.8c.6-.4.6-1.2 0-1.6L8.1 3.4c-.7-.5-1.6 0-1.6.8z" fill="currentColor"/></svg>
+        </button>
+        <button class="film-btn" type="button" data-act="sound" aria-pressed="false" aria-label="Turn sound on">
+          <svg class="i-on" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 7.5h3l4-3.5v12l-4-3.5H3z" fill="currentColor"/><path d="M13 7a4 4 0 0 1 0 6m2-8.5a7.5 7.5 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          <svg class="i-off" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 7.5h3l4-3.5v12l-4-3.5H3z" fill="currentColor"/><path d="M13 7.5l5 5m0-5l-5 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <figcaption class="sr-only">
+        The launch film. A closed iPhone Duo shows one beer: &ldquo;Tired of only drinking one beer?&rdquo; It opens, and the
+        beer becomes two: &ldquo;Now you can drink two beers.&rdquo; You and a friend each drink one by tilting the phone,
+        then tap to refill. It ends on &ldquo;Double Beers!&rdquo;, with a regular iPhone (one beer) and an iPhone Duo (two beers).
+      </figcaption>
+    </figure>
+  </section>
+
+  <div class="wrap" id="features">
+    <hr class="rule">
+
+    <article class="feature" id="tilt" aria-labelledby="tilt-title">
+      <div class="feature-media">
+        <div class="phone tilt">
+          <img src="/media/shot-tilt.webp" srcset="/media/shot-tilt.webp 640w, /media/shot-tilt-2x.webp 923w" sizes="(max-width: 620px) 38vw, 236px"
+               width="640" height="1391" loading="lazy" decoding="async"
+               alt="An iPhone tipped back mid-drink: the last of the beer and its foam pool at the rim, leaving droplets on the empty glass.">
+        </div>
+      </div>
+      <div class="feature-copy">
+        <p class="kicker"><span class="num">01</span>Tilt to drink</p>
+        <h2 id="tilt-title">Raise it to your lips. <span class="gold">Tip it back.</span></h2>
+        <p class="body">The whole screen is the glass. Tip it like a real pint and the beer sloshes, foams and drains as you drink. <strong>Nothing is a video:</strong> every wave, bubble and bit of foam is simulated live from your phone&rsquo;s motion and drawn in Metal.</p>
+        <ul class="ticks">
+          <li><b>Tap to refill</b> when it&rsquo;s empty</li>
+          <li><b>Double-tap</b> for a fresh pour any time</li>
+          <li><b>Shake</b> to whip up the head</li>
+          <li><b>Pop</b> the big bubbles in the foam</li>
+        </ul>
+      </div>
+    </article>
+
+    <hr class="rule">
+
+    <article class="feature flip" id="two-beers" aria-labelledby="two-title">
+      <div class="feature-media">
+        <div class="duo-stage">
+          <div class="duo">
+            <img src="/media/shot-duo-two.webp" width="1400" height="985" loading="lazy" decoding="async"
+                 alt="An open iPhone Duo with two full glasses of beer, one on each half of the screen.">
+          </div>
+          <ul class="duo-labels" aria-hidden="true">
+            <li><b>You</b><span>tilt left</span></li>
+            <li><b>Friend</b><span>tilt right</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="feature-copy">
+        <p class="kicker"><span class="num">02</span>iPhone Duo</p>
+        <h2 id="two-title">One beer becomes <span class="gold">two.</span></h2>
+        <p class="body">Open an iPhone Duo and the beer you were holding becomes two, one on each half. <strong>You and a friend each drink a beer.</strong> Tilt left to drink the left one, right to drink the right. Fold it shut and they pour back into one.</p>
+        <ul class="ticks">
+          <li><b>Closed:</b> one beer on the cover screen</li>
+          <li><b>Open:</b> two beers, one per half</li>
+          <li><b>iPhone:</b> one big beer, edge to edge</li>
+          <li><b>iPad:</b> one big beer</li>
+        </ul>
+      </div>
+    </article>
+
+    <hr class="rule">
+
+    <article class="feature" id="refill" aria-labelledby="refill-title">
+      <div class="feature-media">
+        <div class="stage">
+          <div class="phone">
+            <img src="/media/shot-feed.webp" srcset="/media/shot-feed.webp 640w, /media/shot-feed-2x.webp 1206w" sizes="(max-width: 560px) 66vw, 300px"
+                 width="640" height="1391" loading="lazy" decoding="async"
+                 alt="The Refill a Friend feed: empty glasses from Sam, Priya, Marco, Aiko and others, each with a Refill button, and your Karma at the top.">
+          </div>
+          <div class="notif" aria-hidden="true">
+            <img src="/media/app-icon.webp" width="40" height="40" alt="">
+            <div><p class="app"><span>Double Beers</span><span>now</span></p><p class="msg">&#127866; Priya refilled your beer!</p></div>
+          </div>
+          <div class="chip" aria-hidden="true">
+            <svg viewBox="0 0 20 20"><path d="M10 1.8l2.4 5.3 5.8.6-4.3 3.9 1.2 5.7L10 14.4l-5.1 2.9 1.2-5.7-4.3-3.9 5.8-.6z" fill="currentColor"/></svg>+1 Karma
+          </div>
+        </div>
+      </div>
+      <div class="feature-copy">
+        <p class="kicker"><span class="num">03</span>Refill a Friend</p>
+        <h2 id="refill-title">Run dry? Anyone can <span class="gold">pour you another.</span></h2>
+        <p class="body">When your glass is empty, it shows up on a public feed. Anyone, anywhere can refill it from afar, and <strong>earns a point of Karma</strong> for it. A fresh beer pours on your phone, with a notification if you allow them.</p>
+        <ul class="facts">
+          <li><b>Karma</b><span>One point for every refill you give.</span></li>
+          <li><b>Leaderboards</b><span>Karma and Beers Finished, on Game Center.</span></li>
+          <li><b>Your call</b><span>Keep your glass off the feed in Settings.</span></li>
+        </ul>
+      </div>
+    </article>
+
+    <hr class="rule">
+
+    <section class="styles" id="styles" aria-labelledby="styles-title">
+      <div class="section-head">
+        <p class="kicker"><span class="num">04</span>Six styles</p>
+        <h2 id="styles-title">Six beers <span class="gold">on tap.</span></h2>
+        <p class="body">Each with its own color, haze, head and fizz. Pick one, then pour it your way.</p>
+      </div>
+      <ul class="style-grid">
+        <!--pints:start-->
+        <li class="style">
+          <div class="style-glass"><svg class="pint pint-lager" viewBox="0 -6 100 166" role="img" aria-label="A pint of Lager"><defs><linearGradient id="pg-lager-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FCC226"/><stop offset=".55" stop-color="#E79816"/><stop offset="1" stop-color="#CC6602"/></linearGradient><linearGradient id="pg-lager-e" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#CC6602" stop-opacity=".75"/><stop offset=".26" stop-color="#CC6602" stop-opacity="0"/><stop offset=".7" stop-color="#CC6602" stop-opacity="0"/><stop offset="1" stop-color="#CC6602" stop-opacity=".8"/></linearGradient><linearGradient id="pg-lager-h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FEF2CF"/></linearGradient><radialGradient id="pg-lager-g" cx=".5" cy=".42" r=".55"><stop offset="0" stop-color="#FDCD4D" stop-opacity="0.55"/><stop offset="1" stop-color="#FCC226" stop-opacity="0"/></radialGradient><clipPath id="pg-lager-c"><path d="M11 2H89L78.8 140H21.2Z"/></clipPath></defs><path d="M9 6H91L80.1 147Q79.8 152 75.0 152H25.0Q20.2 152 19.9 147Z" fill="rgba(235,225,205,.05)"/><g clip-path="url(#pg-lager-c)"><rect x="0" y="27.0" width="100" height="113.0" fill="url(#pg-lager-b)"/><rect x="0" y="27.0" width="100" height="113.0" fill="url(#pg-lager-g)"/><rect x="0" y="27.0" width="100" height="113.0" fill="url(#pg-lager-e)"/><g class="bubbles"><circle class="bub" cx="52.9" cy="59.3" r="0.85" fill="#FFF6E4" fill-opacity="0.37" style="--from:78.7px;--to:-29.3px;--d:3.81s;--dl:-2.38s"/><circle class="bub" cx="73.4" cy="36.3" r="0.76" fill="#FFF6E4" fill-opacity="0.51" style="--from:101.7px;--to:-6.3px;--d:3.07s;--dl:-3.06s"/><circle class="bub" cx="48.7" cy="120.3" r="1.06" fill="#FFF6E4" fill-opacity="0.65" style="--from:17.7px;--to:-90.3px;--d:2.90s;--dl:-1.84s"/><circle class="bub" cx="64.7" cy="88.4" r="1.09" fill="#FFF6E4" fill-opacity="0.56" style="--from:49.6px;--to:-58.4px;--d:2.73s;--dl:-2.07s"/><circle class="bub" cx="19.6" cy="65.7" r="1.24" fill="#FFF6E4" fill-opacity="0.66" style="--from:72.3px;--to:-35.7px;--d:3.55s;--dl:-2.55s"/><circle class="bub" cx="74.4" cy="107.8" r="0.87" fill="#FFF6E4" fill-opacity="0.68" style="--from:30.2px;--to:-77.8px;--d:4.20s;--dl:-1.87s"/><circle class="bub" cx="27.8" cy="124.6" r="0.66" fill="#FFF6E4" fill-opacity="0.50" style="--from:13.4px;--to:-94.6px;--d:3.03s;--dl:-2.93s"/><circle class="bub" cx="38.2" cy="98.9" r="0.96" fill="#FFF6E4" fill-opacity="0.55" style="--from:39.1px;--to:-68.9px;--d:3.37s;--dl:-1.18s"/><circle class="bub" cx="74.3" cy="94.6" r="1.10" fill="#FFF6E4" fill-opacity="0.70" style="--from:43.4px;--to:-64.6px;--d:4.46s;--dl:-3.82s"/><circle class="bub" cx="30.2" cy="103.5" r="1.24" fill="#FFF6E4" fill-opacity="0.55" style="--from:34.5px;--to:-73.5px;--d:4.53s;--dl:-4.10s"/><circle class="bub" cx="33.3" cy="107.8" r="1.22" fill="#FFF6E4" fill-opacity="0.37" style="--from:30.2px;--to:-77.8px;--d:3.75s;--dl:-1.07s"/><circle class="bub" cx="77.3" cy="122.1" r="0.62" fill="#FFF6E4" fill-opacity="0.40" style="--from:15.9px;--to:-92.1px;--d:4.20s;--dl:-1.72s"/><circle class="bub" cx="67.4" cy="65.0" r="1.25" fill="#FFF6E4" fill-opacity="0.37" style="--from:73.0px;--to:-35.0px;--d:2.69s;--dl:-1.65s"/></g><path d="M9 7H91L90 29.0L89.0 29.6 79.2 28.5 69.5 30.1 59.8 30.3 50.0 29.0 40.2 30.4 30.5 28.5 20.8 27.8 11.0 29.3 L10 29.0Z" fill="url(#pg-lager-h)"/><circle cx="17.2" cy="13.4" r="0.83" fill="#DBD2C5" opacity=".45"/><circle cx="57.7" cy="12.7" r="0.53" fill="#DBD2C5" opacity=".45"/><circle cx="75.7" cy="15.3" r="1.27" fill="#DBD2C5" opacity=".45"/><circle cx="77.8" cy="16.4" r="0.87" fill="#DBD2C5" opacity=".45"/><circle cx="51.4" cy="20.9" r="0.98" fill="#DBD2C5" opacity=".45"/><circle cx="54.1" cy="20.5" r="1.25" fill="#DBD2C5" opacity=".45"/><circle cx="50.5" cy="17.3" r="1.08" fill="#DBD2C5" opacity=".45"/><circle cx="31.6" cy="15.1" r="1.28" fill="#DBD2C5" opacity=".45"/><circle cx="51.5" cy="19.3" r="0.51" fill="#DBD2C5" opacity=".45"/><rect x="0" y="27.4" width="100" height="3" fill="#FEE093" opacity=".35"/></g><path d="M8.5 12.0 L8.5 10.2 Q15.7 -4.5 27.9 5.9 Q33.7 -0.2 40.1 5.2 Q44.7 0.6 53.8 4.6 Q56.6 1.1 61.2 5.4 Q61.9 3.9 62.3 4.5 Q79.4 -8.6 91.5 10.2 L91.5 12.0 Z" fill="url(#pg-lager-h)"/><circle cx="44.4" cy="7.8" r="0.51" fill="#E0D9CD" opacity=".4"/><circle cx="57.6" cy="8.0" r="0.54" fill="#E0D9CD" opacity=".4"/><circle cx="58.4" cy="7.4" r="0.91" fill="#E0D9CD" opacity=".4"/><circle cx="40.3" cy="8.3" r="0.94" fill="#E0D9CD" opacity=".4"/><circle cx="18.5" cy="5.7" r="0.91" fill="#E0D9CD" opacity=".4"/><path d="M20.6 140H79.4L79.1 148Q78.9 151 75.0 151H25.0Q21.1 151 20.9 148Z" fill="#D48535" opacity=".55"/><path d="M21.6 140.8H78.4" stroke="#fff" stroke-opacity=".22" stroke-width="1"/><path d="M9 6H91L80.1 147Q79.8 152 75.0 152H25.0Q20.2 152 19.9 147Z" fill="none" stroke="rgba(235,225,205,.42)" stroke-width="1.3" stroke-linejoin="round"/><path d="M14.5 12L25.0 141" stroke="#fff" stroke-opacity=".26" stroke-width="2.6" stroke-linecap="round"/><path d="M85 18L74.5 121" stroke="#fff" stroke-opacity=".1" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+          <h3>Lager</h3>
+          <p>Crisp, golden, the classic</p>
+        </li>
+        <li class="style">
+          <div class="style-glass"><svg class="pint pint-pilsner" viewBox="0 -6 100 166" role="img" aria-label="A pint of Pilsner"><defs><linearGradient id="pg-pilsner-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFDE52"/><stop offset=".55" stop-color="#EFBA30"/><stop offset="1" stop-color="#DB8F08"/></linearGradient><linearGradient id="pg-pilsner-e" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#DB8F08" stop-opacity=".75"/><stop offset=".26" stop-color="#DB8F08" stop-opacity="0"/><stop offset=".7" stop-color="#DB8F08" stop-opacity="0"/><stop offset="1" stop-color="#DB8F08" stop-opacity=".8"/></linearGradient><linearGradient id="pg-pilsner-h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FFF8D9"/></linearGradient><radialGradient id="pg-pilsner-g" cx=".5" cy=".42" r=".55"><stop offset="0" stop-color="#FFE471" stop-opacity="0.55"/><stop offset="1" stop-color="#FFDE52" stop-opacity="0"/></radialGradient><clipPath id="pg-pilsner-c"><path d="M11 2H89L78.8 140H21.2Z"/></clipPath></defs><path d="M9 6H91L80.1 147Q79.8 152 75.0 152H25.0Q20.2 152 19.9 147Z" fill="rgba(235,225,205,.05)"/><g clip-path="url(#pg-pilsner-c)"><rect x="0" y="28.1" width="100" height="112.0" fill="url(#pg-pilsner-b)"/><rect x="0" y="28.1" width="100" height="112.0" fill="url(#pg-pilsner-g)"/><rect x="0" y="28.1" width="100" height="112.0" fill="url(#pg-pilsner-e)"/><g class="bubbles"><circle class="bub" cx="60.2" cy="127.5" r="1.16" fill="#FFF6E4" fill-opacity="0.57" style="--from:10.5px;--to:-96.4px;--d:3.53s;--dl:-0.92s"/><circle class="bub" cx="70.4" cy="127.4" r="1.01" fill="#FFF6E4" fill-opacity="0.70" style="--from:10.6px;--to:-96.4px;--d:2.35s;--dl:-0.97s"/><circle class="bub" cx="37.7" cy="46.5" r="1.31" fill="#FFF6E4" fill-opacity="0.46" style="--from:91.5px;--to:-15.4px;--d:2.80s;--dl:-0.58s"/><circle class="bub" cx="41.0" cy="127.8" r="0.89" fill="#FFF6E4" fill-opacity="0.52" style="--from:10.2px;--to:-96.7px;--d:3.08s;--dl:-2.48s"/><circle class="bub" cx="55.0" cy="44.3" r="0.58" fill="#FFF6E4" fill-opacity="0.59" style="--from:93.7px;--to:-13.2px;--d:2.23s;--dl:-0.42s"/><circle class="bub" cx="62.3" cy="64.7" r="0.68" fill="#FFF6E4" fill-opacity="0.60" style="--from:73.3px;--to:-33.6px;--d:2.27s;--dl:-0.05s"/><circle class="bub" cx="34.4" cy="122.8" r="0.74" fill="#FFF6E4" fill-opacity="0.46" style="--from:15.2px;--to:-91.7px;--d:2.10s;--dl:-1.35s"/><circle class="bub" cx="59.9" cy="49.9" r="1.03" fill="#FFF6E4" fill-opacity="0.57" style="--from:88.1px;--to:-18.8px;--d:2.80s;--dl:-0.43s"/><circle class="bub" cx="45.9" cy="92.1" r="0.68" fill="#FFF6E4" fill-opacity="0.59" style="--from:45.9px;--to:-61.1px;--d:3.57s;--dl:-3.08s"/><circle class="bub" cx="54.3" cy="136.6" r="0.83" fill="#FFF6E4" fill-opacity="0.53" style="--from:1.4px;--to:-105.5px;--d:2.27s;--dl:-1.38s"/><circle class="bub" cx="80.7" cy="80.1" r="1.22" fill="#FFF6E4" fill-opacity="0.35" style="--from:57.9px;--to:-49.1px;--d:2.26s;--dl:-2.00s"/><circle class="bub" cx="39.1" cy="101.8" r="1.13" fill="#FFF6E4" fill-opacity="0.62" style="--from:36.2px;--to:-70.8px;--d:3.60s;--dl:-1.91s"/><circle class="bub" cx="61.5" cy="41.5" r="0.64" fill="#FFF6E4" fill-opacity="0.38" style="--from:96.5px;--to:-10.5px;--d:2.81s;--dl:-0.94s"/><circle class="bub" cx="26.7" cy="111.5" r="0.76" fill="#FFF6E4" fill-opacity="0.46" style="--from:26.5px;--to:-80.4px;--d:2.22s;--dl:-1.47s"/><circle class="bub" cx="17.5" cy="40.5" r="0.73" fill="#FFF6E4" fill-opacity="0.36" style="--from:97.5px;--to:-9.5px;--d:2.89s;--dl:-0.04s"/><circle class="bub" cx="51.6" cy="103.3" r="0.66" fill="#FFF6E4" fill-opacity="0.45" style="--from:34.7px;--to:-72.3px;--d:2.58s;--dl:-0.33s"/></g><path d="M9 7H91L90 30.1L89.0 29.7 79.2 29.3 69.5 29.2 59.8 29.3 50.0 29.5 40.2 30.2 30.5 31.1 20.8 30.5 11.0 29.9 L10 30.1Z" fill="url(#pg-pilsner-h)"/><circle cx="15.2" cy="13.4" r="1.01" fill="#DBD2C5" opacity=".45"/><circle cx="43.4" cy="25.3" r="1.23" fill="#DBD2C5" opacity=".45"/><circle cx="35.8" cy="16.6" r="0.74" fill="#DBD2C5" opacity=".45"/><circle cx="62.4" cy="11.8" r="0.72" fill="#DBD2C5" opacity=".45"/><circle cx="76.5" cy="16.7" r="1.28" fill="#DBD2C5" opacity=".45"/><circle cx="42.7" cy="25.1" r="0.87" fill="#DBD2C5" opacity=".45"/><circle cx="22.0" cy="20.4" r="0.67" fill="#DBD2C5" opacity=".45"/><circle cx="79.3" cy="22.7" r="0.92" fill="#DBD2C5" opacity=".45"/><circle cx="79.6" cy="19.9" r="1.27" fill="#DBD2C5" opacity=".45"/><rect x="0" y="28.4" width="100" height="3" fill="#FFEEA8" opacity=".35"/></g><path d="M8.5 12.0 L8.5 10.2 Q17.4 -1.1 27.7 5.9 Q36.0 -5.9 45.3 3.4 Q49.5 0.3 52.7 3.2 Q53.1 2.9 53.7 6.7 Q64.5 -3.2 69.8 4.1 Q76.5 -1.6 83.3 6.9 Q86.1 4.0 91.5 10.2 L91.5 12.0 Z" fill="url(#pg-pilsner-h)"/><circle cx="64.2" cy="6.2" r="0.68" fill="#E0D9CD" opacity=".4"/><circle cx="72.8" cy="5.9" r="1.09" fill="#E0D9CD" opacity=".4"/><circle cx="19.7" cy="8.5" r="0.87" fill="#E0D9CD" opacity=".4"/><circle cx="43.8" cy="7.9" r="0.85" fill="#E0D9CD" opacity=".4"/><circle cx="40.7" cy="6.6" r="0.53" fill="#E0D9CD" opacity=".4"/><path d="M20.6 140H79.4L79.1 148Q78.9 151 75.0 151H25.0Q21.1 151 20.9 148Z" fill="#DFA339" opacity=".55"/><path d="M21.6 140.8H78.4" stroke="#fff" stroke-opacity=".22" stroke-width="1"/><path d="M9 6H91L80.1 147Q79.8 152 75.0 152H25.0Q20.2 152 19.9 147Z" fill="none" stroke="rgba(235,225,205,.42)" stroke-width="1.3" stroke-linejoin="round"/><path d="M14.5 12L25.0 141" stroke="#fff" stroke-opacity=".26" stroke-width="2.6" stroke-linecap="round"/><path d="M85 18L74.5 121" stroke="#fff" stroke-opacity=".1" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+          <h3>Pilsner</h3>
+          <p>Pale straw, lively bubbles</p>
+        </li>
+        <li class="style">
+          <div class="style-glass"><svg class="pint pint-amber" viewBox="0 -6 100 166" role="img" aria-label="A pint of Amber Ale"><defs><linearGradient id="pg-amber-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#DB6E1A"/><stop offset=".55" stop-color="#B04E10"/><stop offset="1" stop-color="#7A2605"/></linearGradient><linearGradient id="pg-amber-e" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7A2605" stop-opacity=".75"/><stop offset=".26" stop-color="#7A2605" stop-opacity="0"/><stop offset=".7" stop-color="#7A2605" stop-opacity="0"/><stop offset="1" stop-color="#7A2605" stop-opacity=".8"/></linearGradient><linearGradient id="pg-amber-h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF9ED"/><stop offset="1" stop-color="#F7D5B1"/></linearGradient><radialGradient id="pg-amber-g" cx=".5" cy=".42" r=".55"><stop offset="0" stop-color="#E28843" stop-opacity="0.55"/><stop offset="1" stop-color="#DB6E1A" stop-opacity="0"/></radialGradient><clipPath id="pg-amber-c"><path d="M11 2H89L78.8 140H21.2Z"/></clipPath></defs><path d="M9 6H91L80.1 147Q79.8 152 75.0 152H25.0Q20.2 152 19.9 147Z" fill="rgba(235,225,205,.05)"/><g clip-path="url(#pg-amber-c)"><rect x="0" y="27.0" width="100" height="113.0" fill="url(#pg-amber-b)"/><rect x="0" y="27.0" width="100" height="113.0" fill="url(#pg-amber-g)"/><rect x="0" y="27.0" width="100" height="113.0" fill="url(#pg-amber-e)"/><rect x="0" y="29.0" width="100" height="111.0" fill="#F3C497" opacity="0.02"/><g class="bubbles"><circle class="bub" cx="26.1" cy="104.6" r="1.04" fill="#FFF6E4" fill-opacity="0.53" style="--from:33.4px;--to:-74.6px;--d:5.35s;--dl:-4.47s"/><circle class="bub" cx="42.2" cy="99.4" r="0.97" fill="#FFF6E4" fill-opacity="0.56" style="--from:38.6px;--to:-69.4px;--d:3.52s;--dl:-2.40s"/><circle class="bub" cx="42.1" cy="63.8" r="1.14" fill="#FFF6E4" fill-opacity="0.69" style="--from:74.2px;--to:-33.8px;--d:4.36s;--dl:-4.18s"/><circle class="bub" cx="27.1" cy="120.5" r="0.61" fill="#FFF6E4" fill-opacity="0.60" style="--from:17.5px;--to:-90.5px;--d:3.97s;--dl:-1.43s"/><circle class="bub" cx="53.5" cy="119.3" r="1.06" fill="#FFF6E4" fill-opacity="0.53" style="--from:18.7px;--to:-89.3px;--d:4.68s;--dl:-0.16s"/><circle class="bub" cx="44.5" cy="56.8" r="0.56" fill="#FFF6E4" fill-opacity="0.37" style="--from:81.2px;--to:-26.8px;--d:4.89s;--dl:-4.45s"/><circle class="bub" cx="21.3" cy="94.2" r="0.83" fill="#FFF6E4" fill-opacity="0.60" style="--from:43.8px;--to:-64.2px;--d:3.65s;--dl:-3.14s"/><circle class="bub" cx="34.5" cy="126.4" r="1.13" fill="#FFF6E4" fill-opacity="0.67" style="--from:11.6px;--to:-96.4px;--d:5.00s;--dl:-2.55s"/><circle class="bub" cx="37.1" cy="98.7" r="1.12" fill="#FFF6E4" fill-opacity="0.57" style="--from:39.3px;--to:-68.7px;--d:4.45s;--dl:-0.95s"/><circle class="bub" cx="46.5" cy="39.9" r="1.00" fill="#FFF6E4" fill-opacity="0.38" style="--from:98.1px;--to:-9.9px;--d:3.26s;--dl:-2.11s"/></g><path d="M9 7H91L90 29.0L89.0 29.4 79.2 28.6 69.5 27.7 59.8 30.4 50.0 27.8 40.2 28.0 30.5 29.0 20.8 28.3 11.0 29.1 L10 29.0Z" fill="url(#pg-amber-h)"/><circle cx="48.2" cy="19.8" r="0.93" fill="#DBCAAE" opacity=".45"/><circle cx="35.6" cy="13.6" r="1.06" fill="#DBCAAE" opacity=".45"/><circle cx="45.0" cy="18.8" r="1.23" fill="#DBCAAE" opacity=".45"/><circle cx="15.6" cy="14.7" r="0.95" fill="#DBCAAE" opacity=".45"/><circle cx="18.8" cy="22.8" r="0.82" fill="#DBCAAE" opacity=".45"/><circle cx="37.1" cy="13.3" r="1.27" fill="#DBCAAE" opacity=".45"/><circle cx="18.3" cy="24.0" r="1.06" fill="#DBCAAE" opacity=".45"/><circle cx="77.8" cy="21.9" r="0.78" fill="#DBCAAE" opacity=".45"/><circle cx="53.5" cy="25.7" r="0.53" fill="#DBCAAE" opacity=".45"/><rect x="0" y="27.4" width="100" height="3" fill="#EDB07A" opacity=".35"/></g><path d="M8.5 12.0 L8.5 10.2 Q14.8 4.5 19.4 7.6 Q24.0 1.4 26.7 5.1 Q28.0 3.8 29.2 7.0 Q38.7 -0.8 45.0 3.8 Q47.7 1.0 49.7 5.1 Q49.8 5.0 49.9 6.6 Q55.4 0.5 63.6 6.2 Q73.1 -8.4 91.5 10.2 L91.5 12.0 Z" fill="url(#pg-amber-h)"/><circle cx="73.1" cy="8.2" r="0.62" fill="#E0D0B4" opacity=".4"/><circle cx="80.8" cy="6.7" r="0.50" fill="#E0D0B4" opacity=".4"/><circle cx="34.7" cy="7.6" r="0.52" fill="#E0D0B4" opacity=".4"/><circle cx="56.1" cy="7.3" r="0.70" fill="#E0D0B4" opacity=".4"/><circle cx="66.9" cy="8.0" r="1.08" fill="#E0D0B4" opacity=".4"/><path d="M20.6 140H79.4L79.1 148Q78.9 151 75.0 151H25.0Q21.1 151 20.9 148Z" fill="#965537" opacity=".55"/><path d="M21.6 140.8H78.4" stroke="#fff" stroke-opacity=".22" stroke-width="1"/><path d="M9 6H91L80.1 147Q79.8 152 75.0 152H25.0Q20.2 152 19.9 147Z" fill="none" stroke="rgba(235,225,205,.42)" stroke-width="1.3" stroke-linejoin="round"/><path d="M14.5 12L25.0 141" stroke="#fff" stroke-opacity=".26" stroke-width="2.6" stroke-linecap="round"/><path d="M85 18L74.5 121" stroke="#fff" stroke-opacity=".1" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+          <h3>Amber Ale</h3>
+          <p>Copper red, toasty head</p>
+        </li>
+        <li class="style">
+          <div class="style-glass"><svg class="pint pint-ipa" viewBox="0 -6 100 166" role="img" aria-label="A pint of Hazy IPA"><defs><linearGradient id="pg-ipa-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FCB833"/><stop offset=".55" stop-color="#E7971F"/><stop offset="1" stop-color="#CC7008"/></linearGradient><linearGradient id="pg-ipa-e" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#CC7008" stop-opacity=".75"/><stop offset=".26" stop-color="#CC7008" stop-opacity="0"/><stop offset=".7" stop-color="#CC7008" stop-opacity="0"/><stop offset="1" stop-color="#CC7008" stop-opacity=".8"/></linearGradient><linearGradient id="pg-ipa-h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFCF5"/><stop offset="1" stop-color="#FEEBC2"/></linearGradient><radialGradient id="pg-ipa-g" cx=".5" cy=".42" r=".55"><stop offset="0" stop-color="#FDC458" stop-opacity="0.55"/><stop offset="1" stop-color="#FCB833" stop-opacity="0"/></radialGradient><clipPath id="pg-ipa-c"><path d="M11 2H89L78.8 140H21.2Z"/></clipPath></defs><path d="M9 6H91L80.1 147Q79.8 152 75.0 152H25.0Q20.2 152 19.9 147Z" fill="rgba(235,225,205,.05)"/><g clip-path="url(#pg-ipa-c)"><rect x="0" y="27.0" width="100" height="113.0" fill="url(#pg-ipa-b)"/><rect x="0" y="27.0" width="100" height="113.0" fill="url(#pg-ipa-g)"/><rect x="0" y="27.0" width="100" height="113.0" fill="url(#pg-ipa-e)"/><rect x="0" y="29.0" width="100" height="111.0" fill="#FEE3AA" opacity="0.15"/><g class="bubbles"><circle class="bub" cx="30.2" cy="128.2" r="0.99" fill="#FFF6E4" fill-opacity="0.48" style="--from:9.8px;--to:-98.2px;--d:3.96s;--dl:-3.80s"/><circle class="bub" cx="54.8" cy="80.5" r="0.86" fill="#FFF6E4" fill-opacity="0.60" style="--from:57.5px;--to:-50.5px;--d:4.92s;--dl:-4.32s"/><circle class="bub" cx="83.7" cy="40.7" r="0.99" fill="#FFF6E4" fill-opacity="0.53" style="--from:97.3px;--to:-10.7px;--d:4.22s;--dl:-2.29s"/><circle class="bub" cx="37.7" cy="129.9" r="0.66" fill="#FFF6E4" fill-opacity="0.45" style="--from:8.1px;--to:-99.9px;--d:5.11s;--dl:-1.33s"/><circle class="bub" cx="74.8" cy="79.7" r="0.85" fill="#FFF6E4" fill-opacity="0.43" style="--from:58.3px;--to:-49.7px;--d:2.92s;--dl:-0.78s"/><circle class="bub" cx="77.2" cy="37.1" r="1.14" fill="#FFF6E4" fill-opacity="0.69" style="--from:100.9px;--to:-7.1px;--d:3.19s;--dl:-0.77s"/><circle class="bub" cx="46.9" cy="106.4" r="1.01" fill="#FFF6E4" fill-opacity="0.57" style="--from:31.6px;--to:-76.4px;--d:5.07s;--dl:-1.21s"/><circle class="bub" cx="49.0" cy="36.6" r="0.74" fill="#FFF6E4" fill-opacity="0.50" style="--from:101.4px;--to:-6.6px;--d:3.64s;--dl:-1.43s"/><circle class="bub" cx="42.6" cy="126.2" r="0.57" fill="#FFF6E4" fill-opacity="0.64" style="--from:11.8px;--to:-96.2px;--d:4.75s;--dl:-4.38s"/><circle class="bub" cx="40.6" cy="65.1" r="1.16" fill="#FFF6E4" fill-opacity="0.53" style="--from:72.9px;--to:-35.1px;--d:3.07s;--dl:-0.18s"/><circle class="bub" cx="47.6" cy="58.5" r="0.68" fill="#FFF6E4" fill-opacity="0.47" style="--from:79.5px;--to:-28.5px;--d:5.03s;--dl:-2.49s"/><circle class="bub" cx="35.4" cy="66.1" r="1.18" fill="#FFF6E4" fill-opacity="0.68" style="--from:71.9px;--to:-36.1px;--d:4.66s;--dl:-3.68s"/></g><path d="M9 7H91L90 29.0L89.0 29.3 79.2 28.7 69.5 28.8 59.8 28.0 50.0 28.6 40.2 29.0 30.5 30.0 20.8 29.2 11.0 27.9 L10 29.0Z" fill="url(#pg-ipa-h)"/><circle cx="52.6" cy="15.8" r="1.14" fill="#DBCFB8" opacity=".45"/><circle cx="73.6" cy="20.1" r="1.03" fill="#DBCFB8" opacity=".45"/><circle cx="44.4" cy="14.7" r="1.14" fill="#DBCFB8" opacity=".45"/><circle cx="69.1" cy="19.5" r="1.24" fill="#DBCFB8" opacity=".45"/><circle cx="72.3" cy="21.9" r="0.58" fill="#DBCFB8" opacity=".45"/><circle cx="82.2" cy="11.6" r="0.66" fill="#DBCFB8" opacity=".45"/><circle cx="23.6" cy="13.0" r="1.06" fill="#DBCFB8" opacity=".45"/><circle cx="54.1" cy="12.2" r="0.66" fill="#DBCFB8" opacity=".45"/><circle cx="67.1" cy="15.4" r="0.67" fill="#DBCFB8" opacity=".45"/><rect x="0" y="27.4" width="100" height="3" fill="#FED98F" opacity=".35"/></g><path d="M8.5 12.0 L8.5 10.2 Q15.8 -3.2 20.4 3.4 Q28.4 -1.9 33.3 3.8 Q45.3 -6.1 54.6 4.1 Q55.8 3.4 56.8 5.5 Q63.6 -1.4 74.5 6.4 Q76.5 3.7 77.6 4.9 Q83.8 -3.5 91.5 10.2 L91.5 12.0 Z" fill="url(#pg-ipa-h)"/><circle cx="70.1" cy="6.5" r="0.55" fill="#E0D5BF" opacity=".4"/><circle cx="51.3" cy="8.4" r="0.50" fill="#E0D5BF" opacity=".4"/><circle cx="58.5" cy="6.2" r="1.02" fill="#E0D5BF" opacity=".4"/><circle cx="48.0" cy="6.9" r="0.70" fill="#E0D5BF" opacity=".4"/><circle cx="22.1" cy="5.6" r="0.80" fill="#E0D5BF" opacity=".4"/><path d="M20.6 140H79.4L79.1 148Q78.9 151 75.0 151H25.0Q21.1 151 20.9 148Z" fill="#D48C39" opacity=".55"/><path d="M21.6 140.8H78.4" stroke="#fff" stroke-opacity=".22" stroke-width="1"/><path d="M9 6H91L80.1 147Q79.8 152 75.0 152H25.0Q20.2 152 19.9 147Z" fill="none" stroke="rgba(235,225,205,.42)" stroke-width="1.3" stroke-linejoin="round"/><path d="M14.5 12L25.0 141" stroke="#fff" stroke-opacity=".26" stroke-width="2.6" stroke-linecap="round"/><path d="M85 18L74.5 121" stroke="#fff" stroke-opacity=".1" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+          <h3>Hazy IPA</h3>
+          <p>Juicy gold, a little hazy</p>
+        </li>
+        <li class="style">
+          <div class="style-glass"><svg class="pint pint-wheat" viewBox="0 -6 100 166" role="img" aria-label="A pint of Hefeweizen"><defs><linearGradient id="pg-wheat-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD461"/><stop offset=".55" stop-color="#EFB140"/><stop offset="1" stop-color="#DB8717"/></linearGradient><linearGradient id="pg-wheat-e" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#DB8717" stop-opacity=".75"/><stop offset=".26" stop-color="#DB8717" stop-opacity="0"/><stop offset=".7" stop-color="#DB8717" stop-opacity="0"/><stop offset="1" stop-color="#DB8717" stop-opacity=".8"/></linearGradient><linearGradient id="pg-wheat-h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFC"/><stop offset="1" stop-color="#FFF5D8"/></linearGradient><radialGradient id="pg-wheat-g" cx=".5" cy=".42" r=".55"><stop offset="0" stop-color="#FFDB7D" stop-opacity="0.55"/><stop offset="1" stop-color="#FFD461" stop-opacity="0"/></radialGradient><clipPath id="pg-wheat-c"><path d="M11 2H89L78.8 140H21.2Z"/></clipPath></defs><path d="M9 6H91L80.1 147Q79.8 152 75.0 152H25.0Q20.2 152 19.9 147Z" fill="rgba(235,225,205,.05)"/><g clip-path="url(#pg-wheat-c)"><rect x="0" y="33.3" width="100" height="106.7" fill="url(#pg-wheat-b)"/><rect x="0" y="33.3" width="100" height="106.7" fill="url(#pg-wheat-g)"/><rect x="0" y="33.3" width="100" height="106.7" fill="url(#pg-wheat-e)"/><rect x="0" y="35.3" width="100" height="104.7" fill="#FFF0C4" opacity="0.25"/><g class="bubbles"><circle class="bub" cx="57.6" cy="72.3" r="0.56" fill="#FFF6E4" fill-opacity="0.70" style="--from:65.7px;--to:-36.0px;--d:4.15s;--dl:-3.41s"/><circle class="bub" cx="30.6" cy="66.5" r="0.59" fill="#FFF6E4" fill-opacity="0.59" style="--from:71.5px;--to:-30.2px;--d:2.72s;--dl:-0.07s"/><circle class="bub" cx="69.9" cy="76.3" r="1.16" fill="#FFF6E4" fill-opacity="0.47" style="--from:61.7px;--to:-40.0px;--d:3.00s;--dl:-0.50s"/><circle class="bub" cx="60.1" cy="44.2" r="0.70" fill="#FFF6E4" fill-opacity="0.50" style="--from:93.8px;--to:-7.9px;--d:2.63s;--dl:-2.34s"/><circle class="bub" cx="76.0" cy="131.8" r="1.08" fill="#FFF6E4" fill-opacity="0.44" style="--from:6.2px;--to:-95.5px;--d:2.82s;--dl:-0.42s"/><circle class="bub" cx="50.7" cy="111.8" r="0.79" fill="#FFF6E4" fill-opacity="0.49" style="--from:26.2px;--to:-75.5px;--d:2.40s;--dl:-0.84s"/><circle class="bub" cx="33.1" cy="47.9" r="0.79" fill="#FFF6E4" fill-opacity="0.55" style="--from:90.1px;--to:-11.6px;--d:3.12s;--dl:-1.54s"/><circle class="bub" cx="38.6" cy="122.6" r="0.63" fill="#FFF6E4" fill-opacity="0.55" style="--from:15.4px;--to:-86.3px;--d:2.91s;--dl:-0.63s"/><circle class="bub" cx="39.0" cy="86.9" r="0.63" fill="#FFF6E4" fill-opacity="0.57" style="--from:51.1px;--to:-50.6px;--d:3.73s;--dl:-2.33s"/><circle class="bub" cx="70.5" cy="108.6" r="0.58" fill="#FFF6E4" fill-opacity="0.60" style="--from:29.4px;--to:-72.3px;--d:2.71s;--dl:-1.28s"/><circle class="bub" cx="50.3" cy="89.6" r="0.80" fill="#FFF6E4" fill-opacity="0.69" style="--from:48.4px;--to:-53.3px;--d:2.81s;--dl:-2.45s"/><circle class="bub" cx="48.0" cy="89.1" r="0.65" fill="#FFF6E4" fill-opacity="0.57" style="--from:48.9px;--to:-52.8px;--d:3.46s;--dl:-0.73s"/><circle class="bub" cx="47.9" cy="68.0" r="1.24" fill="#FFF6E4" fill-opacity="0.46" style="--from:70.0px;--to:-31.7px;--d:2.93s;--dl:-1.57s"/><circle class="bub" cx="72.5" cy="87.8" r="0.94" fill="#FFF6E4" fill-opacity="0.51" style="--from:50.2px;--to:-51.5px;--d:4.12s;--dl:-1.68s"/></g><path d="M9 7H91L90 35.3L89.0 35.7 79.2 35.3 69.5 35.8 59.8 34.7 50.0 33.9 40.2 35.1 30.5 34.1 20.8 34.6 11.0 35.6 L10 35.3Z" fill="url(#pg-wheat-h)"/><circle cx="63.3" cy="31.2" r="1.04" fill="#DBD2C2" opacity=".45"/><circle cx="53.9" cy="18.0" r="0.88" fill="#DBD2C2" opacity=".45"/><circle cx="35.2" cy="12.4" r="0.93" fill="#DBD2C2" opacity=".45"/><circle cx="59.2" cy="17.2" r="1.09" fill="#DBD2C2" opacity=".45"/><circle cx="52.1" cy="17.2" r="1.18" fill="#DBD2C2" opacity=".45"/><circle cx="16.5" cy="16.3" r="0.76" fill="#DBD2C2" opacity=".45"/><circle cx="62.1" cy="15.9" r="1.29" fill="#DBD2C2" opacity=".45"/><circle cx="22.4" cy="20.5" r="0.88" fill="#DBD2C2" opacity=".45"/><circle cx="67.1" cy="15.9" r="0.63" fill="#DBD2C2" opacity=".45"/><circle cx="67.1" cy="28.3" r="0.96" fill="#DBD2C2" opacity=".45"/><circle cx="78.2" cy="19.2" r="0.86" fill="#DBD2C2" opacity=".45"/><circle cx="49.9" cy="13.0" r="1.16" fill="#DBD2C2" opacity=".45"/><rect x="0" y="33.7" width="100" height="3" fill="#FFE9AD" opacity=".35"/></g><path d="M8.5 12.0 L8.5 10.2 Q18.0 0.7 23.6 7.7 Q26.7 -0.7 32.0 3.2 Q32.6 2.6 33.6 6.3 Q34.7 3.7 37.1 5.3 Q42.9 -3.7 56.0 5.2 Q67.7 -6.6 78.6 4.9 Q84.3 0.8 91.5 10.2 L91.5 12.0 Z" fill="url(#pg-wheat-h)"/><circle cx="21.1" cy="5.8" r="1.05" fill="#E0D9CA" opacity=".4"/><circle cx="46.8" cy="6.1" r="1.03" fill="#E0D9CA" opacity=".4"/><circle cx="29.5" cy="7.3" r="0.51" fill="#E0D9CA" opacity=".4"/><circle cx="26.5" cy="7.4" r="0.92" fill="#E0D9CA" opacity=".4"/><circle cx="25.5" cy="8.5" r="0.89" fill="#E0D9CA" opacity=".4"/><path d="M20.6 140H79.4L79.1 148Q78.9 151 75.0 151H25.0Q21.1 151 20.9 148Z" fill="#DF9D44" opacity=".55"/><path d="M21.6 140.8H78.4" stroke="#fff" stroke-opacity=".22" stroke-width="1"/><path d="M9 6H91L80.1 147Q79.8 152 75.0 152H25.0Q20.2 152 19.9 147Z" fill="none" stroke="rgba(235,225,205,.42)" stroke-width="1.3" stroke-linejoin="round"/><path d="M14.5 12L25.0 141" stroke="#fff" stroke-opacity=".26" stroke-width="2.6" stroke-linecap="round"/><path d="M85 18L74.5 121" stroke="#fff" stroke-opacity=".1" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+          <h3>Hefeweizen</h3>
+          <p>Cloudy, big fluffy head</p>
+        </li>
+        <li class="style">
+          <div class="style-glass"><svg class="pint pint-stout" viewBox="0 -6 100 166" role="img" aria-label="A pint of Stout"><defs><linearGradient id="pg-stout-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#261106"/><stop offset=".55" stop-color="#180A04"/><stop offset="1" stop-color="#080301"/></linearGradient><linearGradient id="pg-stout-e" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#080301" stop-opacity=".75"/><stop offset=".26" stop-color="#080301" stop-opacity="0"/><stop offset=".7" stop-color="#080301" stop-opacity="0"/><stop offset="1" stop-color="#080301" stop-opacity=".8"/></linearGradient><linearGradient id="pg-stout-h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F5E8D1"/><stop offset="1" stop-color="#D3B688"/></linearGradient><radialGradient id="pg-stout-g" cx=".5" cy=".42" r=".55"><stop offset="0" stop-color="#261106" stop-opacity="0.35"/><stop offset="1" stop-color="#261106" stop-opacity="0"/></radialGradient><clipPath id="pg-stout-c"><path d="M11 2H89L78.8 140H21.2Z"/></clipPath></defs><path d="M9 6H91L80.1 147Q79.8 152 75.0 152H25.0Q20.2 152 19.9 147Z" fill="rgba(235,225,205,.05)"/><g clip-path="url(#pg-stout-c)"><rect x="0" y="29.1" width="100" height="110.9" fill="url(#pg-stout-b)"/><rect x="0" y="29.1" width="100" height="110.9" fill="url(#pg-stout-g)"/><rect x="0" y="29.1" width="100" height="110.9" fill="url(#pg-stout-e)"/><g class="bubbles"><circle class="bub" cx="30.5" cy="76.8" r="1.02" fill="#C8A67A" fill-opacity="0.26" style="--from:61.2px;--to:-44.7px;--d:7.70s;--dl:-4.06s"/><circle class="bub" cx="60.3" cy="122.3" r="0.53" fill="#C8A67A" fill-opacity="0.20" style="--from:15.7px;--to:-90.2px;--d:9.17s;--dl:-1.12s"/><circle class="bub" cx="44.0" cy="54.4" r="0.87" fill="#C8A67A" fill-opacity="0.24" style="--from:83.6px;--to:-22.3px;--d:5.76s;--dl:-0.94s"/><circle class="bub" cx="25.6" cy="123.1" r="1.02" fill="#C8A67A" fill-opacity="0.21" style="--from:14.9px;--to:-91.0px;--d:6.19s;--dl:-5.44s"/><circle class="bub" cx="76.6" cy="129.0" r="1.06" fill="#C8A67A" fill-opacity="0.27" style="--from:9.0px;--to:-96.9px;--d:7.79s;--dl:-7.42s"/></g><path d="M9 7H91L90 31.1L89.0 29.8 79.2 31.1 69.5 30.8 59.8 30.8 50.0 31.1 40.2 31.1 30.5 30.8 20.8 30.1 11.0 30.9 L10 31.1Z" fill="url(#pg-stout-h)"/><circle cx="36.8" cy="26.3" r="0.52" fill="#CEB589" opacity=".45"/><circle cx="24.3" cy="20.6" r="0.57" fill="#CEB589" opacity=".45"/><circle cx="35.0" cy="23.5" r="1.28" fill="#CEB589" opacity=".45"/><circle cx="40.6" cy="10.5" r="0.87" fill="#CEB589" opacity=".45"/><circle cx="40.1" cy="16.3" r="1.00" fill="#CEB589" opacity=".45"/><circle cx="42.2" cy="16.6" r="1.05" fill="#CEB589" opacity=".45"/><circle cx="51.4" cy="20.9" r="0.77" fill="#CEB589" opacity=".45"/><circle cx="48.3" cy="22.0" r="1.27" fill="#CEB589" opacity=".45"/><circle cx="71.0" cy="27.7" r="1.16" fill="#CEB589" opacity=".45"/><circle cx="17.4" cy="16.2" r="0.69" fill="#CEB589" opacity=".45"/><rect x="0" y="29.5" width="100" height="3" fill="#887154" opacity=".35"/></g><path d="M8.5 12.0 L8.5 10.2 Q19.3 -4.1 25.8 4.5 Q40.7 -6.5 53.4 5.7 Q64.2 -1.6 71.2 3.8 Q71.2 3.8 71.2 5.1 Q71.6 4.7 72.0 6.2 Q72.2 3.4 72.5 3.7 Q83.2 -6.3 91.5 10.2 L91.5 12.0 Z" fill="url(#pg-stout-h)"/><circle cx="46.7" cy="8.6" r="0.92" fill="#D2B98D" opacity=".4"/><circle cx="22.3" cy="5.7" r="0.69" fill="#D2B98D" opacity=".4"/><circle cx="19.1" cy="7.7" r="0.62" fill="#D2B98D" opacity=".4"/><circle cx="82.2" cy="8.1" r="0.95" fill="#D2B98D" opacity=".4"/><circle cx="45.8" cy="7.4" r="0.58" fill="#D2B98D" opacity=".4"/><path d="M20.6 140H79.4L79.1 148Q78.9 151 75.0 151H25.0Q21.1 151 20.9 148Z" fill="#403A34" opacity=".55"/><path d="M21.6 140.8H78.4" stroke="#fff" stroke-opacity=".22" stroke-width="1"/><path d="M9 6H91L80.1 147Q79.8 152 75.0 152H25.0Q20.2 152 19.9 147Z" fill="none" stroke="rgba(235,225,205,.42)" stroke-width="1.3" stroke-linejoin="round"/><path d="M14.5 12L25.0 141" stroke="#fff" stroke-opacity=".26" stroke-width="2.6" stroke-linecap="round"/><path d="M85 18L74.5 121" stroke="#fff" stroke-opacity=".1" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+          <h3>Stout</h3>
+          <p>Near black, creamy tan head</p>
+        </li>
+        <!--pints:end-->
+      </ul>
+      <ul class="tweaks" aria-label="Make it yours">
+        <li class="tweak">
+          <h3>Head</h3><p>Barely there to towering.</p>
+          <div class="ui" aria-hidden="true"><div class="track"><i style="width:62%"></i></div><div class="ends"><span>Thin</span><span>Thick</span></div></div>
+        </li>
+        <li class="tweak">
+          <h3>Fizz</h3><p>Nearly flat to champagne.</p>
+          <div class="ui" aria-hidden="true"><div class="track"><i style="width:48%"></i></div><div class="ends"><span>Flat</span><span>Lively</span></div></div>
+        </li>
+        <li class="tweak">
+          <h3>Feel</h3><p>Calm, natural or lively waves.</p>
+          <div class="ui" aria-hidden="true"><div class="seg"><span>Calm</span><span class="on">Natural</span><span>Lively</span></div></div>
+        </li>
+        <li class="tweak">
+          <h3>Wet glass</h3><p>Droplets and drips left behind as it drains.</p>
+          <div class="ui" aria-hidden="true"><div class="switch"><span>On</span><i></i></div></div>
+        </li>
+      </ul>
+    </section>
+
+    <hr class="rule">
+
+    <section class="promise" aria-labelledby="promise-title">
+      <h2 id="promise-title">Free. No ads. <span class="gold">No tracking.</span></h2>
+      <p>No in-app purchases, no accounts to make, no analytics and no third-party code. The beer runs entirely on your device.</p>
+    </section>
+  </div>
+
+  <section class="finale" aria-labelledby="finale-title">
+    <div class="wrap">
+      <img class="finale-icon" src="/media/app-icon.webp" width="128" height="128" loading="lazy" alt="The Double Beers app icon: two beer mugs clinking.">
+      <p class="q">Tired of only drinking <span class="gold">one beer?</span></p>
+      <h2 id="finale-title">Now you can drink <span class="gold">two beers.</span></h2>
+      <div class="cta-row">
+        <a class="btn" href="https://testflight.apple.com/join/3u9vCuNe">
+          Join the beta
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4.5-5L15 10l-4.5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <!-- APP STORE BADGE SLOT (same as the hero): delete `hidden` once the app is live. -->
+        <a class="btn btn-ghost appstore-badge" href="https://apps.apple.com/app/id6824046542" data-slot="app-store" hidden>Download on the App Store</a>
+      </div>
+      <p class="fine"><span>A toy for grown-ups: no real beer, no alcohol</span> <span class="sep sep-brk" aria-hidden="true">&middot;</span><span class="brk"></span> <span class="nw">iPhone, iPad and iPhone Duo</span></p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <a class="brand" href="/"><img src="/media/app-icon.webp" width="34" height="34" alt="" loading="lazy"><span>Double Beers</span></a>
+      <ul class="foot-links">
+        <li><a href="/privacy/">Privacy</a></li>
+        <li><a href="/support/">Support</a></li>
+        <li><a href="mailto:support@doublebeers.com">Contact</a></li>
+        <li><a href="https://testflight.apple.com/join/3u9vCuNe">Join the beta</a></li>
+      </ul>
+    </div>
+    <p class="foot-note">Double Beers is a toy for adults (<a href="/support/#age-rating">rated 18+</a>). There&rsquo;s no real beer and no alcohol, and nothing is for sale. If you do drink for real, please drink responsibly.</p>
+    <p class="foot-legal">&copy; 2026 Mitch Chaiet. Apple, iPhone, iPad, iCloud, Game Center and TestFlight are trademarks of Apple Inc.</p>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const header = document.querySelector('.site-header');
+  const onScroll = () => header.classList.toggle('is-stuck', window.scrollY > 8);
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // The launch film: loads after the page, plays only while on screen. It doesn't autoplay for reduced motion,
+  // Save-Data or a 2G/3G connection (the poster stays and Play still works).
+  const fig = document.getElementById('film');
+  const v = fig && fig.querySelector('video');
+  if (!v || !('IntersectionObserver' in window)) return;
+  const playBtn = fig.querySelector('[data-act="play"]');
+  const soundBtn = fig.querySelector('[data-act="sound"]');
+  const tall = matchMedia('(max-width: 700px) and (orientation: portrait)');
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  const conn = navigator.connection || {};
+  const saveData = !!conn.saveData;
+  const slow = /^(slow-)?2g$|^3g$/.test(conn.effectiveType || '');
+  // Phones get a light cut: 1080p HEVC (4.6 MB) where it plays, else 720p H.264 (4.2 MB).
+  let hevc = !!v.dataset.tallHevc && v.canPlayType('video/mp4; codecs="hvc1"') !== '';
+  let wanted = !still.matches && !saveData && !slow;
+  let visible = false;
+  let current = '';
+
+  const pick = () => {
+    const src = tall.matches ? (hevc ? v.dataset.tallHevc : v.dataset.tall) : v.dataset.wide;
+    if (src === current) return;
+    current = src;
+    fig.classList.remove('has-played');
+    v.poster = tall.matches ? v.dataset.posterTall : v.dataset.posterWide;
+    v.src = src;
+  };
+  const ui = () => {
+    playBtn.setAttribute('aria-pressed', String(wanted));
+    playBtn.setAttribute('aria-label', wanted ? 'Pause the film' : 'Play the film');
+    soundBtn.setAttribute('aria-pressed', String(!v.muted));
+    soundBtn.setAttribute('aria-label', v.muted ? 'Turn sound on' : 'Turn sound off');
+  };
+  const sync = () => {
+    if (wanted && visible) {
+      pick();
+      const p = v.play();
+      // Blocked autoplay (e.g. Low Power Mode) shows Play. A source change (AbortError) or a failed source
+      // (NotSupportedError, handled by the error listener) doesn't count as the visitor pausing.
+      if (p && p.catch) p.catch((e) => { if (e && (e.name === 'AbortError' || e.name === 'NotSupportedError')) return; wanted = false; ui(); });
+    } else if (!v.paused) {
+      v.pause();
+    }
+    ui();
+  };
+  // Swap the poster out on the first painted frame (a timer covers browsers without requestVideoFrameCallback).
+  const shown = () => { if (!v.paused) fig.classList.add('has-played'); };
+  v.addEventListener('playing', () => {
+    if (v.requestVideoFrameCallback) v.requestVideoFrameCallback(shown);
+    setTimeout(shown, 250);
+  });
+  v.addEventListener('error', () => {
+    if (hevc && current === v.dataset.tallHevc) {
+      // The HEVC cut didn't decode: fall back to H.264.
+      hevc = false; current = '';
+      if (wanted) sync(); else pick();
+    } else {
+      wanted = false; ui();
+    }
+  });
+  playBtn.addEventListener('click', () => { wanted = !wanted; sync(); });
+  soundBtn.addEventListener('click', () => {
+    v.muted = !v.muted;
+    if (!v.muted) wanted = true;
+    sync();
+  });
+  tall.addEventListener('change', () => { if (current) { current = ''; if (wanted) sync(); else pick(); } });
+  still.addEventListener('change', (e) => { wanted = !e.matches; sync(); });
+  ui();
+
+  const start = () => new IntersectionObserver((entries) => {
+    visible = entries[entries.length - 1].isIntersecting;
+    sync();
+  }, { threshold: 0.2 }).observe(fig);
+  if (document.readyState === 'complete') start(); else addEventListener('load', start, { once: true });
+})();
+</script>
+</body>
+</html>

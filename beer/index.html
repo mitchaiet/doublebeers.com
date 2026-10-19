@@ -1,0 +1,133 @@
+<!doctype html>
+<!--
+  Fallback for "Send a Beer" links: https://doublebeers.com/beer/?c=CODE (a real page, so link previews get a 200).
+  /beer/<CODE> paths also land on the same copy via 404.html.
+  NOT YET IN THE APP: 1.0 has no Associated Domains entitlement and no onOpenURL handler, so nothing makes these
+  links and none would open the app. Keep this page noindex and unlinked, and keep its copy neutral, until the
+  release that ships Send a Beer. That release can bring back the "tap the link again and it opens in the app" steps.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Someone sent you a beer 🍺 · Double Beers</title>
+<meta name="description" content="Someone sent you a beer. Get Double Beers to pour it.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#070504">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://doublebeers.com/beer/">
+<meta name="apple-itunes-app" content="app-id=6824046542">
+<meta name="apple-mobile-web-app-title" content="Double Beers">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Double Beers">
+<meta property="og:url" content="https://doublebeers.com/beer/">
+<meta property="og:title" content="Someone sent you a beer 🍺">
+<meta property="og:description" content="Get Double Beers to pour it. Tilt to drink, tap to refill.">
+<meta property="og:image" content="https://doublebeers.com/og-beer.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Someone sent you a beer. Get Double Beers to pour it.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Someone sent you a beer 🍺">
+<meta name="twitter:description" content="Get Double Beers to pour it. Tilt to drink, tap to refill.">
+<meta name="twitter:image" content="https://doublebeers.com/og-beer.png">
+<meta name="twitter:image:alt" content="Someone sent you a beer. Get Double Beers to pour it.">
+
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/db-rounded.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+  main { overflow-x: clip; }
+  .gift { position: relative; isolation: isolate; min-height: calc(100svh - 68px); display: grid; place-items: center; padding: 34px 0 72px; text-align: center; }
+  .gift::before {
+    content: ""; position: absolute; z-index: -1; left: 50%; top: 2%; width: min(1000px, 160vw); height: 760px; transform: translateX(-50%);
+    background: radial-gradient(closest-side, rgba(245, 180, 60, .24), rgba(214, 128, 24, .08) 55%, transparent);
+    pointer-events: none;
+  }
+  .glass-hero { width: clamp(132px, 13vw, 168px); margin: 0 auto; filter: drop-shadow(0 30px 30px rgba(0, 0, 0, .6)); animation: bob 5s ease-in-out infinite; }
+  @keyframes bob { 0%, 100% { transform: translateY(0) rotate(-1.5deg); } 50% { transform: translateY(-8px) rotate(1.5deg); } }
+  .gift h1 { margin: 16px 0 0; color: var(--cream-hi); font: 860 clamp(40px, 6.6vw, 80px)/1 var(--round); letter-spacing: -0.035em; text-wrap: balance; }
+  .gift .eyebrow { justify-content: center; margin-top: 28px; }
+  .gift .dek { max-width: 520px; margin: 18px auto 0; color: var(--muted); font-size: clamp(18px, 1.6vw, 21px); line-height: 1.5; text-wrap: balance; }
+  .gift .dek strong { color: var(--cream-hi); font-weight: 650; }
+  .cta-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 30px; }
+  .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; max-width: 720px; margin: 40px auto 0; padding: 0; list-style: none; counter-reset: s; text-align: left; }
+  .steps li { position: relative; padding: 16px 16px 16px 54px; border-radius: 18px; background: var(--card); box-shadow: inset 0 0 0 1px var(--hair); color: var(--cream); font-size: 15px; line-height: 1.4; counter-increment: s; }
+  .steps li::before { content: counter(s); position: absolute; left: 16px; top: 15px; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--gold); color: var(--ink); font: 800 13px/1 var(--round); }
+  .gift .more { margin: 30px 0 0; color: var(--muted); font-size: 15px; }
+  .if-beer { display: none; }
+  .is-beer .if-beer { display: block; }
+  .is-beer .if-404 { display: none; }
+  @media (max-width: 640px) { .steps { grid-template-columns: minmax(0, 1fr); max-width: 360px; } }
+  @media (prefers-reduced-motion: reduce) { .glass-hero { animation: none; } .bub { animation: none; } }
+  .bub { animation: rise var(--d) linear var(--dl) infinite; }
+  @keyframes rise { 0% { transform: translateY(var(--from)); opacity: 0; } 12% { opacity: 1; } 86% { opacity: 1; } 100% { transform: translateY(var(--to)); opacity: 0; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav wrap" aria-label="Main">
+    <a class="brand" href="/" aria-label="Double Beers home"><img src="/media/app-icon.webp" width="34" height="34" alt=""><span>Double Beers</span></a>
+    <ul class="nav-links">
+      <li><a href="/#features">Features</a></li>
+      <li><a href="/support/">Support</a></li>
+      <li><a href="/privacy/">Privacy</a></li>
+    </ul>
+    <a class="btn btn-sm" href="https://testflight.apple.com/join/3u9vCuNe">Join the beta</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="gift" aria-labelledby="gift-title">
+    <div class="wrap">
+      <div class="glass-hero"><svg class="pint" viewBox="0 -6 100 166" role="img" aria-label="A full pint of beer, with a fluffy head"><defs><linearGradient id="pg-gift-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FCC226"/><stop offset=".55" stop-color="#E79816"/><stop offset="1" stop-color="#CC6602"/></linearGradient><linearGradient id="pg-gift-e" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#CC6602" stop-opacity=".75"/><stop offset=".26" stop-color="#CC6602" stop-opacity="0"/><stop offset=".7" stop-color="#CC6602" stop-opacity="0"/><stop offset="1" stop-color="#CC6602" stop-opacity=".8"/></linearGradient><linearGradient id="pg-gift-h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FEF2CF"/></linearGradient><radialGradient id="pg-gift-g" cx=".5" cy=".42" r=".55"><stop offset="0" stop-color="#FDCD4D" stop-opacity="0.55"/><stop offset="1" stop-color="#FCC226" stop-opacity="0"/></radialGradient><clipPath id="pg-gift-c"><path d="M11 2H89L78.8 140H21.2Z"/></clipPath></defs><path d="M9 6H91L80.1 147Q79.8 152 75.0 152H25.0Q20.2 152 19.9 147Z" fill="rgba(235,225,205,.05)"/><g clip-path="url(#pg-gift-c)"><rect x="0" y="29.1" width="100" height="110.9" fill="url(#pg-gift-b)"/><rect x="0" y="29.1" width="100" height="110.9" fill="url(#pg-gift-g)"/><rect x="0" y="29.1" width="100" height="110.9" fill="url(#pg-gift-e)"/><g class="bubbles"><circle class="bub" cx="74.4" cy="129.5" r="1.26" fill="#FFF6E4" fill-opacity="0.50" style="--from:8.5px;--to:-97.4px;--d:2.41s;--dl:-1.42s"/><circle class="bub" cx="27.5" cy="90.1" r="0.70" fill="#FFF6E4" fill-opacity="0.51" style="--from:47.9px;--to:-58.0px;--d:3.03s;--dl:-0.67s"/><circle class="bub" cx="21.5" cy="39.6" r="1.12" fill="#FFF6E4" fill-opacity="0.61" style="--from:98.4px;--to:-7.5px;--d:2.99s;--dl:-1.53s"/><circle class="bub" cx="21.9" cy="73.0" r="1.18" fill="#FFF6E4" fill-opacity="0.57" style="--from:65.0px;--to:-40.9px;--d:3.29s;--dl:-2.16s"/><circle class="bub" cx="42.6" cy="134.1" r="1.16" fill="#FFF6E4" fill-opacity="0.58" style="--from:3.9px;--to:-102.0px;--d:2.90s;--dl:-1.66s"/><circle class="bub" cx="23.4" cy="68.5" r="0.93" fill="#FFF6E4" fill-opacity="0.51" style="--from:69.5px;--to:-36.4px;--d:3.51s;--dl:-2.07s"/><circle class="bub" cx="31.2" cy="101.3" r="0.69" fill="#FFF6E4" fill-opacity="0.42" style="--from:36.7px;--to:-69.2px;--d:2.82s;--dl:-2.30s"/><circle class="bub" cx="22.9" cy="48.5" r="0.58" fill="#FFF6E4" fill-opacity="0.64" style="--from:89.5px;--to:-16.4px;--d:2.74s;--dl:-1.57s"/><circle class="bub" cx="41.7" cy="70.1" r="0.78" fill="#FFF6E4" fill-opacity="0.54" style="--from:67.9px;--to:-38.0px;--d:2.79s;--dl:-2.17s"/><circle class="bub" cx="24.4" cy="62.9" r="1.18" fill="#FFF6E4" fill-opacity="0.43" style="--from:75.1px;--to:-30.8px;--d:3.49s;--dl:-2.89s"/><circle class="bub" cx="75.4" cy="91.6" r="1.02" fill="#FFF6E4" fill-opacity="0.69" style="--from:46.4px;--to:-59.5px;--d:3.91s;--dl:-0.65s"/><circle class="bub" cx="44.3" cy="42.7" r="0.57" fill="#FFF6E4" fill-opacity="0.69" style="--from:95.3px;--to:-10.6px;--d:3.67s;--dl:-2.52s"/><circle class="bub" cx="75.3" cy="117.5" r="0.98" fill="#FFF6E4" fill-opacity="0.47" style="--from:20.5px;--to:-85.4px;--d:3.98s;--dl:-2.98s"/><circle class="bub" cx="43.4" cy="134.4" r="0.70" fill="#FFF6E4" fill-opacity="0.42" style="--from:3.6px;--to:-102.3px;--d:2.39s;--dl:-1.11s"/><circle class="bub" cx="74.5" cy="130.4" r="0.72" fill="#FFF6E4" fill-opacity="0.41" style="--from:7.6px;--to:-98.3px;--d:2.44s;--dl:-1.29s"/></g><path d="M9 7H91L90 31.1L89.0 31.2 79.2 32.0 69.5 30.4 59.8 30.9 50.0 32.2 40.2 30.9 30.5 30.7 20.8 32.2 11.0 32.0 L10 31.1Z" fill="url(#pg-gift-h)"/><circle cx="77.7" cy="23.1" r="0.83" fill="#DBD2C5" opacity=".45"/><circle cx="63.5" cy="25.8" r="1.01" fill="#DBD2C5" opacity=".45"/><circle cx="31.7" cy="15.6" r="0.83" fill="#DBD2C5" opacity=".45"/><circle cx="69.0" cy="20.6" r="0.94" fill="#DBD2C5" opacity=".45"/><circle cx="72.9" cy="12.1" r="1.00" fill="#DBD2C5" opacity=".45"/><circle cx="38.3" cy="20.7" r="1.17" fill="#DBD2C5" opacity=".45"/><circle cx="32.4" cy="28.2" r="0.56" fill="#DBD2C5" opacity=".45"/><circle cx="54.3" cy="20.3" r="0.69" fill="#DBD2C5" opacity=".45"/><circle cx="54.3" cy="19.0" r="0.86" fill="#DBD2C5" opacity=".45"/><circle cx="65.3" cy="10.1" r="0.80" fill="#DBD2C5" opacity=".45"/><rect x="0" y="29.5" width="100" height="3" fill="#FEE093" opacity=".35"/></g><path d="M8.5 12.0 L8.5 10.2 Q15.6 -1.2 20.1 3.2 Q26.3 0.2 30.0 7.1 Q30.3 6.3 30.5 6.4 Q36.2 -0.6 40.7 4.4 Q58.6 -16.5 75.9 6.7 Q77.7 4.9 78.6 6.0 Q81.6 3.1 83.0 4.4 Q88.5 1.1 91.5 10.2 L91.5 12.0 Z" fill="url(#pg-gift-h)"/><circle cx="68.8" cy="6.1" r="1.02" fill="#E0D9CD" opacity=".4"/><circle cx="30.4" cy="8.2" r="0.60" fill="#E0D9CD" opacity=".4"/><circle cx="46.7" cy="7.2" r="0.55" fill="#E0D9CD" opacity=".4"/><circle cx="63.2" cy="7.4" r="0.91" fill="#E0D9CD" opacity=".4"/><circle cx="52.6" cy="7.7" r="0.82" fill="#E0D9CD" opacity=".4"/><path d="M20.6 140H79.4L79.1 148Q78.9 151 75.0 151H25.0Q21.1 151 20.9 148Z" fill="#D48535" opacity=".55"/><path d="M21.6 140.8H78.4" stroke="#fff" stroke-opacity=".22" stroke-width="1"/><path d="M9 6H91L80.1 147Q79.8 152 75.0 152H25.0Q20.2 152 19.9 147Z" fill="none" stroke="rgba(235,225,205,.42)" stroke-width="1.3" stroke-linejoin="round"/><path d="M14.5 12L25.0 141" stroke="#fff" stroke-opacity=".26" stroke-width="2.6" stroke-linecap="round"/><path d="M85 18L74.5 121" stroke="#fff" stroke-opacity=".1" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+      <p class="eyebrow">Cheers!</p>
+      <h1 id="gift-title">Someone sent you a beer &#127866;</h1>
+      <p class="dek">Get <strong>Double Beers</strong> to pour it. It&rsquo;s free, with no ads and no tracking.</p>
+      <div class="cta-row">
+        <a class="btn" href="https://testflight.apple.com/join/3u9vCuNe">Join the beta <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4.5-5L15 10l-4.5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <!-- APP STORE BADGE SLOT: delete `hidden` once Double Beers is live on the App Store. -->
+        <a class="btn btn-ghost appstore-badge" href="https://apps.apple.com/app/id6824046542" data-slot="app-store" hidden>Download on the App Store</a>
+      </div>
+      <ol class="steps">
+        <li>Get the free Double Beers beta on TestFlight.</li>
+        <li>Open it. The whole screen is your glass.</li>
+        <li>Tilt to drink. Tap to refill.</li>
+      </ol>
+      <p class="more">Already have Double Beers? Open it and tilt to drink your own. <a href="/">What&rsquo;s Double Beers?</a></p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <a class="brand" href="/"><img src="/media/app-icon.webp" width="34" height="34" alt="" loading="lazy"><span>Double Beers</span></a>
+      <ul class="foot-links">
+        <li><a href="/privacy/">Privacy</a></li>
+        <li><a href="/support/">Support</a></li>
+        <li><a href="mailto:support@doublebeers.com">Contact</a></li>
+        <li><a href="https://testflight.apple.com/join/3u9vCuNe">Join the beta</a></li>
+      </ul>
+    </div>
+    <p class="foot-note">Double Beers is a toy for adults (<a href="/support/#age-rating">rated 18+</a>). There&rsquo;s no real beer and no alcohol, and nothing is for sale. If you do drink for real, please drink responsibly.</p>
+    <p class="foot-legal">&copy; 2026 Mitch Chaiet. Apple, iPhone, iPad, iCloud, Game Center and TestFlight are trademarks of Apple Inc.</p>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const h = document.querySelector('.site-header');
+  const f = () => h.classList.toggle('is-stuck', window.scrollY > 8);
+  addEventListener('scroll', f, { passive: true });
+  f();
+})();
+</script>
+</body>
+</html>

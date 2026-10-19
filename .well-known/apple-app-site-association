@@ -1,0 +1,1 @@
+{"applinks":{"details":[{"appIDs":["7M36JBY2MX.com.mitchaiet.doublebeers"],"components":[{"/":"/beer/","?":{"c":"*"},"comment":"a beer sent to a friend: /beer/?c=CODE (served by beer/index.html with a 200)"},{"/":"/beer/*","comment":"a beer sent to a friend: /beer/CODE (served by 404.html)"}]}]}}
