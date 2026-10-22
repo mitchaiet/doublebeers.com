@@ -60,7 +60,7 @@
       <p class="eyebrow">Double Beers</p>
       <h1>Privacy Policy</h1>
       <p class="dek">Pull up a stool. Here&rsquo;s what Double Beers stores, who can see it, and how to stop sharing it or have it deleted.</p>
-      <p class="updated">Last updated October 18, 2026 · applies to Double Beers 1.0 for iPhone, iPad and iPhone Duo</p>
+      <p class="updated">Last updated October 22, 2026 · applies to Double Beers 1.0 for iPhone, iPad and iPhone Duo</p>
       <nav class="tabs" aria-label="Help pages"><a href="/support/">Support</a><a href="/privacy/" aria-current="page">Privacy</a></nav>
     </div>
 
@@ -69,8 +69,8 @@
       <ul>
         <li><strong>No ads, no analytics, no tracking, no third-party code,</strong> and no account to create. Nothing is sold.</li>
         <li><strong>The beer runs entirely on your device.</strong> Motion readings, settings and stats stay on it.</li>
-        <li><strong>Refill a Friend is public.</strong> If you're signed in to iCloud, your glass goes into a public database that everyone using Double Beers can read. That includes your Game Center nickname (or &ldquo;A Drinker&rdquo;), beers finished, Karma and when your glass went empty. When it's empty, it shows on the feed for up to 24 hours.</li>
-        <li><strong>You can keep your glass off the feed:</strong> in the app, go to Settings &rsaquo; Friends &rsaquo; Share My Empty Glass and turn it off.</li>
+        <li><strong>Refill a Friend is public, and it's your call.</strong> Nothing of yours goes into its public database until you turn on Share My Empty Glass (the app asks the first time your glass runs dry). Then everyone using Double Beers can read your Game Center nickname (or &ldquo;A Drinker&rdquo;), beers finished, Karma and when your glass went empty. When it's empty, it shows on the feed for up to 24 hours. Each refill you give carries your nickname too.</li>
+        <li><strong>You can take your glass back off:</strong> in the app, go to Settings &rsaquo; Friends &rsaquo; Share My Empty Glass and turn it off. The app deletes your glass record.</li>
         <li><strong>To have your data deleted,</strong> email <a href="mailto:support@doublebeers.com">support@doublebeers.com</a>.</li>
       </ul>
     </section>
@@ -106,13 +106,15 @@
       <li><strong>A random ID for your glass.</strong> It's kept in your device's keychain, so reinstalling the app finds the same glass again.</li>
       <li><strong>Your Game Center player ID.</strong> Kept on the device only, so Karma follows the right player.</li>
       <li><strong>Sounds.</strong> Generated on the device. The app never uses the microphone or the camera.</li>
+      <li><strong>Your refill log.</strong> Who you refilled and who refilled you, with their nicknames, glass IDs and times (the last 100), for the log in Refill a Friend.</li>
+      <li><strong>Drinkers you've hidden.</strong> Their nickname and glass ID, so their glass stays off your feed and their refills don't reach you. Hiding someone isn't sent anywhere, and they aren't told.</li>
     </ul>
 
     <h2 id="public"><span class="n">3</span>Refill a Friend: the public database</h2>
     <p>Refill a Friend works through Apple's <strong>CloudKit public database</strong>, which Apple runs for us. It's used only while you're signed in to iCloud. If you're not signed in, nothing is sent and Refill a Friend stays off; the beer works the same either way.</p>
-    <p>While you're signed in to iCloud, the app keeps your glass record up to date from the moment it opens, whether or not you ever open the Refill a Friend screen. Share My Empty Glass (<a href="#choices">section 7</a>) decides whether your glass can show on the feed as empty; it doesn't stop the record being written.</p>
+    <p>Nothing of yours is written there until you turn on <strong>Share My Empty Glass</strong> (<a href="#choices">section 7</a>). The app asks the first time your glass runs dry, and Not Now keeps it off. While it's on, the app keeps your glass record up to date whenever it's open, whether or not you open the Refill a Friend screen. Turn it off (or choose Not Now) and the app deletes your glass record. Refills you give are written either way.</p>
 
-    <h3>Your glass (one record per device)</h3>
+    <h3>Your glass (one record per device, only while sharing is on)</h3>
     <div class="scroll">
     <table>
       <thead><tr><th>Field</th><th>What it holds</th></tr></thead>
@@ -120,7 +122,7 @@
         <tr><td>Name</td><td>Your Game Center nickname (up to 40 characters), or &ldquo;A Drinker&rdquo; if you're not signed in to Game Center</td></tr>
         <tr><td>Beers finished</td><td>Your running count</td></tr>
         <tr><td>Karma</td><td>How many refills you've given</td></tr>
-        <tr><td>Empty since</td><td>When your glass ran dry. It's set only while your glass is empty <em>and</em> sharing is on; otherwise it's blank.</td></tr>
+        <tr><td>Empty since</td><td>When your glass ran dry. It's set only while your glass is empty; otherwise it's blank.</td></tr>
         <tr><td>Glasses</td><td>1, or 2 if you're drinking two at once on an open iPhone Duo</td></tr>
         <tr><td>Updated</td><td>When the record last changed</td></tr>
         <tr><td>Record ID</td><td>The random ID for your glass (see section 2)</td></tr>
@@ -150,6 +152,9 @@
     </ul>
     <p class="muted">Because the database is public, don't put anything in your Game Center nickname that you wouldn't want strangers to see.</p>
 
+    <h3>Reporting someone</h3>
+    <p>Each glass on the feed has a <strong>&hellip;</strong> menu with <strong>Report</strong>. It opens an email to <a href="mailto:support@doublebeers.com">support@doublebeers.com</a> in your mail app, already filled in with the reported drinker's nickname and glass ID, your own glass ID and the app's version, plus anything you'd like to add. Nothing is sent until you send it. We use a report only to look into it, and may delete the records involved.</p>
+
     <h2 id="gamecenter"><span class="n">4</span>Game Center</h2>
     <p>If you're signed in to Game Center, Double Beers does three things:</p>
     <ul>
@@ -160,7 +165,7 @@
     <p>Game Center is run by Apple under <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>. We don't receive your Apple Account details.</p>
 
     <h2 id="push"><span class="n">5</span>Notifications</h2>
-    <p>The first time you open Refill a Friend, the app asks whether it may send notifications. If you allow them, Apple's CloudKit sends one when someone refills your beer (&ldquo;🍺 Sam refilled your beer!&rdquo;). Apple handles the delivery and your device's push token, and we never see either. We don't send marketing notifications. To turn them off, open the Settings app, then Notifications, then Double Beers.</p>
+    <p>When you turn on Share My Empty Glass, the app asks whether it may send notifications. If you allow them, Apple's CloudKit sends one when someone refills your beer (&ldquo;Sam says cheers! 🍻&rdquo;), with the nickname of whoever refilled you. Apple handles the delivery and your device's push token, and we never see either. We don't send marketing notifications. To turn them off, open the Settings app, then Notifications, then Double Beers.</p>
 
     <h2 id="never"><span class="n">6</span>What we never do</h2>
     <ul>
@@ -173,12 +178,13 @@
 
     <h2 id="choices"><span class="n">7</span>Your choices</h2>
     <ul>
-      <li><strong>Share My Empty Glass</strong> (in the app, Settings &rsaquo; Friends). Off means your glass is never shown as empty, so it never appears on the feed and nobody can refill it.
+      <li><strong>Share My Empty Glass</strong> (in the app, Settings &rsaquo; Friends). Off (or Not Now, when the app first asks) means your glass never appears on the feed and nobody can refill it.
         <ul>
-          <li>Your glass record still exists, with your nickname, beers finished and Karma, but nobody is shown it.</li>
+          <li>The app deletes your glass record from the public database. Turn sharing back on and it writes a new one.</li>
           <li>You can still refill other people. Each refill you send carries your nickname.</li>
         </ul>
       </li>
+      <li><strong>Hide</strong> (the <strong>&hellip;</strong> menu on a glass in Refill a Friend). Their glass leaves your feed and their refills no longer reach you. It's kept on your device only, and they aren't told. Unhide them in Settings &rsaquo; Friends &rsaquo; Hidden Drinkers.</li>
       <li><strong>Game Center.</strong> Sign out and you appear as &ldquo;A Drinker&rdquo;, and the app stops posting to leaderboards.</li>
       <li><strong>iCloud.</strong> Sign out of iCloud (or turn off iCloud for Double Beers, where the Settings app lists it) and the app stops reading and writing the public database. Records already there stay until they're deleted (see <a href="#delete">section 9</a>).</li>
       <li><strong>Reset Stats</strong> (in the app, Settings &rsaquo; Stats). Sets beers finished back to zero, on your device and in your glass record. Game Center keeps your best Beers Finished score on its leaderboard.</li>
@@ -193,7 +199,7 @@
 
     <h2 id="delete"><span class="n">9</span>Deleting your data</h2>
     <p>Email <a href="mailto:support@doublebeers.com?subject=Double%20Beers%3A%20delete%20my%20data">support@doublebeers.com</a> with your Game Center nickname, and roughly when you last used Refill a Friend. We'll delete your glass record and the refill records that carry your nickname, and confirm by email, within 30 days. We'll only ask for more if we can't find you otherwise.</p>
-    <p>If you keep using Double Beers while signed in to iCloud, the app makes a new record for your glass the next time it opens. To stop that, sign out of iCloud (or turn off iCloud for Double Beers, where the Settings app lists it). Turning off Share My Empty Glass on its own isn't enough: it keeps your glass off the feed, but the record is still written.</p>
+    <p>You can delete your glass record yourself: turn off Share My Empty Glass and the app deletes it (and tries again if it can't reach iCloud). Refill records you've sent stay until we delete them, so email us for those. If you turn sharing back on, the app writes a new glass record.</p>
     <p>Everything kept on your device goes when you delete the app, apart from the keychain ID for your glass. You can clear your stats and settings at any time in the app's Settings.</p>
 
     <h2 id="children"><span class="n">10</span>Children</h2>
@@ -211,7 +217,7 @@
     <p>Depending on where you live, you may have the right to ask for a copy of your data, to correct or delete it, or to object to how it's used. This includes the GDPR in the EU and UK and the CCPA/CPRA in California.</p>
     <ul>
       <li><strong>How to ask:</strong> email us. We'll answer within 30 days.</li>
-      <li><strong>Legal basis:</strong> we use this data only to run Refill a Friend and its leaderboards, a feature of the app you installed (our legitimate interest in providing it). It's on whenever you're signed in to iCloud. You can object at any time: turn off Share My Empty Glass to keep your glass off the feed, sign out of iCloud to stop the app writing to the database, or email us to have your records deleted.</li>
+      <li><strong>Legal basis:</strong> we use this data only to run Refill a Friend and its leaderboards, a feature of the app you installed (our legitimate interest in providing it). Your glass is written only while Share My Empty Glass is on, and a refill only when you give one. You can object at any time: turn off Share My Empty Glass and the app deletes your glass record, sign out of iCloud to stop the app using the database at all, or email us to have your records deleted.</li>
       <li><strong>Selling and sharing:</strong> we don't sell or &ldquo;share&rdquo; personal information as California law defines those terms.</li>
       <li><strong>Complaints:</strong> you can also complain to your local data protection authority.</li>
     </ul>
