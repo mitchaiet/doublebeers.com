@@ -168,10 +168,13 @@
   .phone img { width: 100%; height: 100%; object-fit: cover; border-radius: 44px; background: #000; }
   .phone::after { content: ""; position: absolute; top: 22px; left: 50%; width: 31%; height: 27px; border-radius: 20px; background: #000; transform: translateX(-50%); }
   .phone::before { content: ""; position: absolute; left: -3px; top: 23%; width: 4px; height: 9%; border-radius: 3px 0 0 3px; background: #2c2824; }
-  /* The capture is mid-drink with the phone tipped back about 114 degrees; turn the frame the same way so the beer sits level. */
-  /* Rotating doesn't change the layout box (W x 2.17W), but the turned phone is only 1.8W tall: pull the margins in to match. */
-  .phone.tilt { width: min(236px, 38vw); }
-  #tilt .feature-media { min-height: 0; padding: 40px 0; }
+  /* Tilt to drink: a looping capture of the app's beer on a 3D phone. The phone body is in the capture, so no CSS frame.
+     The square box holds the whole swept area of the tipping phone; upright, the phone is 60% of its width (about 255x345 at 420). */
+  .tilt-loop { display: block; width: min(420px, 84vw); max-width: 100%; aspect-ratio: 520 / 519; }
+  .tilt-loop img { display: block; width: 100%; height: 100%; }
+  #tilt .feature-media { min-height: 0; padding: 40px 0; grid-template-columns: minmax(0, 1fr); } /* lets the box shrink in a narrow column */
+  /* Two columns: as tall as the old 236x513 phone slot was (513 + 2 x 40), so the section keeps its height. */
+  @media (min-width: 901px) { #tilt .feature-media { min-height: 593px; } }
 
   .duo-stage { width: min(100%, 580px); }
   .duo {
@@ -384,11 +387,12 @@
 
     <article class="feature" id="tilt" aria-labelledby="tilt-title">
       <div class="feature-media">
-        <div class="phone tilt">
-          <img src="/media/shot-tilt.webp" srcset="/media/shot-tilt.webp 640w, /media/shot-tilt-2x.webp 935w" sizes="(max-width: 620px) 38vw, 236px"
-               width="640" height="1391" loading="lazy" decoding="async"
-               alt="An iPhone showing a fresh glass of beer with a thick, creamy head.">
-        </div>
+        <!-- A 10.5 s loop (animated WebP); reduced motion gets its first frame. -->
+        <picture class="tilt-loop">
+          <source media="(prefers-reduced-motion: reduce)" srcset="/media/tilt-poster.webp" width="750" height="748">
+          <img src="/media/tilt-loop.webp" width="520" height="519" loading="lazy" decoding="async"
+               alt="An iPhone tipped back to drink: the beer stays level, drains, then a fresh pour refills it.">
+        </picture>
       </div>
       <div class="feature-copy">
         <p class="kicker"><span class="num">01</span>Tilt to drink</p>
