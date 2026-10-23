@@ -170,7 +170,7 @@
   .phone::before { content: ""; position: absolute; left: -3px; top: 23%; width: 4px; height: 9%; border-radius: 3px 0 0 3px; background: #2c2824; }
   /* The capture is mid-drink with the phone tipped back about 114 degrees; turn the frame the same way so the beer sits level. */
   /* Rotating doesn't change the layout box (W x 2.17W), but the turned phone is only 1.8W tall: pull the margins in to match. */
-  .phone.tilt { width: min(236px, 38vw); margin-block: calc(min(236px, 38vw) * -0.188); transform: rotate(-114deg); }
+  .phone.tilt { width: min(236px, 38vw); }
   #tilt .feature-media { min-height: 0; padding: 40px 0; }
 
   .duo-stage { width: min(100%, 580px); }
@@ -385,9 +385,9 @@
     <article class="feature" id="tilt" aria-labelledby="tilt-title">
       <div class="feature-media">
         <div class="phone tilt">
-          <img src="/media/shot-tilt.webp" srcset="/media/shot-tilt.webp 640w, /media/shot-tilt-2x.webp 923w" sizes="(max-width: 620px) 38vw, 236px"
+          <img src="/media/shot-tilt.webp" srcset="/media/shot-tilt.webp 640w, /media/shot-tilt-2x.webp 935w" sizes="(max-width: 620px) 38vw, 236px"
                width="640" height="1391" loading="lazy" decoding="async"
-               alt="An iPhone tipped back mid-drink: the last of the beer and its foam pool at the rim, leaving droplets on the empty glass.">
+               alt="An iPhone showing a fresh glass of beer with a thick, creamy head.">
         </div>
       </div>
       <div class="feature-copy">
@@ -396,7 +396,7 @@
         <p class="body">The whole screen is the glass. Tip it like a real pint and the beer sloshes, foams and drains as you drink. Then pass it to a friend and watch their face.</p>
         <ul class="ticks">
           <li><b>Tap to refill</b> when it&rsquo;s empty</li>
-          <li><b>Double-tap</b> for a fresh pour any time</li>
+          <li><b>Double-tap</b> for a fresh pour</li>
           <li><b>Shake</b> to whip up the head</li>
           <li><b>Pop</b> the big bubbles in the foam</li>
         </ul>
