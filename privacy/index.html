@@ -1,7 +1,9 @@
 <!doctype html>
 <!--
   Double Beers privacy policy. Facts match the 1.0 code (CloudKitBackend.swift, SocialHub.swift,
-  GameCenter.swift). If the app changes what it stores, change this page.
+  GameCenter.swift; refill alerts: App/Social/PushServer.swift and push-worker/src/push.js; problem
+  reports and diagnostics: App/Diagnostics/*.swift and the push server's push-worker/src/reports.js
+  and stats.js). If the app changes what it stores, change this page.
 -->
 <html lang="en">
 <head>
@@ -60,7 +62,7 @@
       <p class="eyebrow">Double Beers</p>
       <h1>Privacy Policy</h1>
       <p class="dek">Pull up a stool. Here&rsquo;s what Double Beers stores, who can see it, and how to stop sharing it or have it deleted.</p>
-      <p class="updated">Last updated October 22, 2026 · applies to Double Beers 1.0 for iPhone, iPad and iPhone Duo</p>
+      <p class="updated">Last updated October 24, 2026 · applies to Double Beers 1.0 for iPhone, iPad and iPhone Duo</p>
       <nav class="tabs" aria-label="Help pages"><a href="/support/">Support</a><a href="/privacy/" aria-current="page">Privacy</a></nav>
     </div>
 
@@ -68,7 +70,8 @@
       <h2 id="short">The short pour</h2>
       <ul>
         <li><strong>No third-party code</strong> and no account to create. Nothing is sold.</li>
-        <li><strong>The beer runs entirely on your device.</strong> Motion readings, settings and stats stay on it.</li>
+        <li><strong>The beer runs entirely on your device.</strong> Motion readings, settings and stats stay on it, unless you send us a problem report.</li>
+        <li><strong>Problem reports go only when you tap Send.</strong> Crash and performance reports go only while Help Improve Double Beers is on, and they don't say who you are. We delete reports after 90 days.</li>
         <li><strong>Refill a Friend is public, and it's your call.</strong> Nothing of yours goes into its public database until you turn on Share My Empty Glass (the app asks the first time your glass runs dry). Then everyone using Double Beers can read your Game Center nickname (or &ldquo;A Drinker&rdquo;), beers finished, Karma and when your glass went empty. When it's empty, it shows on the feed for up to 24 hours. Each refill you give carries your nickname too.</li>
         <li><strong>You can take your glass back off:</strong> in the app, go to Settings &rsaquo; Friends &rsaquo; Share My Empty Glass and turn it off. The app deletes your glass record.</li>
         <li><strong>To have your data deleted,</strong> email <a href="mailto:support@doublebeers.com">support@doublebeers.com</a>.</li>
@@ -83,6 +86,7 @@
         <li><a href="#public">Refill a Friend: the public database</a></li>
         <li><a href="#gamecenter">Game Center</a></li>
         <li><a href="#push">Notifications</a></li>
+        <li><a href="#reports">Problem reports and diagnostics</a></li>
         <li><a href="#never">What we never do</a></li>
         <li><a href="#choices">Your choices</a></li>
         <li><a href="#retention">How long it's kept</a></li>
@@ -101,7 +105,8 @@
     <h2 id="device"><span class="n">2</span>What stays on your device</h2>
     <p>Most of Double Beers never leaves your iPhone or iPad:</p>
     <ul>
-      <li><strong>Motion sensor readings.</strong> Used, as they arrive, to move the beer. They're never stored or sent anywhere.</li>
+      <li><strong>Motion sensor readings.</strong> Used, as they arrive, to move the beer. The app doesn't keep them, apart from a note in its event log when something looks off (say, the beer drawn on its side), and they leave your device only in a problem report you send (<a href="#reports">section 6</a>).</li>
+      <li><strong>The app's event log.</strong> A short diary of what the app did, like pours, folds, refills and errors (the last 2,000 events), so you can see it in Settings &rsaquo; Help &rsaquo; Diagnostics. It's sent only with a problem report, and then only the last 10 minutes of it.</li>
       <li><strong>Your settings and stats:</strong> beer style, head, fizz, feel, sounds, beers finished, Karma.</li>
       <li><strong>A random ID for your glass.</strong> It's kept in your device's keychain, so reinstalling the app finds the same glass again.</li>
       <li><strong>Your Game Center player ID.</strong> Kept on the device only, so Karma follows the right player.</li>
@@ -112,7 +117,7 @@
 
     <h2 id="public"><span class="n">3</span>Refill a Friend: the public database</h2>
     <p>Refill a Friend works through Apple's <strong>CloudKit public database</strong>, which Apple runs for us. It's used only while you're signed in to iCloud. If you're not signed in, nothing is sent and Refill a Friend stays off; the beer works the same either way.</p>
-    <p>Nothing of yours is written there until you turn on <strong>Share My Empty Glass</strong> (<a href="#choices">section 7</a>). The app asks the first time your glass runs dry, and Not Now keeps it off. While it's on, the app keeps your glass record up to date whenever it's open, whether or not you open the Refill a Friend screen. Turn it off (or choose Not Now) and the app deletes your glass record. Refills you give are written either way.</p>
+    <p>Nothing of yours is written there until you turn on <strong>Share My Empty Glass</strong> (<a href="#choices">section 8</a>). The app asks the first time your glass runs dry, and Not Now keeps it off. While it's on, the app keeps your glass record up to date whenever it's open, whether or not you open the Refill a Friend screen. Turn it off (or choose Not Now) and the app deletes your glass record. Refills you give are written either way.</p>
 
     <h3>Your glass (one record per device, only while sharing is on)</h3>
     <div class="scroll">
@@ -165,9 +170,43 @@
     <p>Game Center is run by Apple under <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>. We don't receive your Apple Account details.</p>
 
     <h2 id="push"><span class="n">5</span>Notifications</h2>
-    <p>When you turn on Share My Empty Glass, the app asks whether it may send notifications. If you allow them, Apple's CloudKit sends one when someone refills your beer (&ldquo;Sam says cheers! 🍻&rdquo;), with the nickname of whoever refilled you. Apple handles the delivery and your device's push token, and we never see either. We don't send marketing notifications. To turn them off, open the Settings app, then Notifications, then Double Beers.</p>
+    <p>When you turn on Share My Empty Glass, the app asks whether it may send notifications. If you allow them, you get one when someone refills your beer (&ldquo;Sam says cheers! 🍻&rdquo;), with the nickname of whoever refilled you. It comes from Apple's CloudKit, from Double Beers' own push server (which runs on Cloudflare), or both, shown as one.</p>
+    <ul>
+      <li><strong>Your push token.</strong> So a friend's refill can reach your lock screen, while Share My Empty Glass is on the app sends our push server your device's push token (the address Apple gives the app for notifications) and the random ID of your glass. The server keeps them for up to 180 days after the app last checked in or an alert last reached it, and deletes them when you turn off Share My Empty Glass. After that it keeps only a scrambled copy of the app's key for your glass ID (up to 180 days), so nobody else can take that ID over.</li>
+      <li><strong>When you refill someone,</strong> the app asks the push server to tell them. It sends your glass ID, theirs, your nickname and the refill's ID. The server passes the alert to Apple to deliver and doesn't keep it, apart from counting how many refills each glass sends and gets, for a day at most, so nobody can flood anyone with alerts.</li>
+    </ul>
+    <p>We don't send marketing notifications. To turn them off, open the Settings app, then Notifications, then Double Beers.</p>
 
-    <h2 id="never"><span class="n">6</span>What we never do</h2>
+    <h2 id="reports"><span class="n">6</span>Problem reports and diagnostics</h2>
+    <p>When something's off with your beer, the app can tell us what it was up to, so we can fix it. There are two ways, and both are up to you.</p>
+
+    <h3>Report a Problem: only when you tap Send</h3>
+    <p>Open Settings &rsaquo; Help &rsaquo; Report a Problem in the app, or press and hold the beer with three fingers. The app shows you what it will send before anything goes:</p>
+    <ul>
+      <li>your note, and a screenshot of the beer if you leave that switched on (the glass only, not the rest of your screen);</li>
+      <li>what the app is up to right then: your glasses, how the phone is tilted, the screen and the fold, your settings, how Refill a Friend is set up, and the frame rate and memory use;</li>
+      <li>the last 10 minutes of the app's event log (<a href="#device">section 2</a>);</li>
+      <li>your iPhone model and the iOS and app versions;</li>
+      <li>the random ID of your glass, so we can match the report to it.</li>
+    </ul>
+    <p>A report never includes other drinkers' nicknames or glass IDs. The app shows a report number, like &ldquo;Report #K7Q2&rdquo;, once it's sent. Offline? It waits on your device and goes when you're back (or after 7 days it's dropped).</p>
+
+    <h3>Help Improve Double Beers: your choice, in Settings &rsaquo; Help</h3>
+    <p>While this is on, the app also sends us two things by itself:</p>
+    <ul>
+      <li><strong>Crash and performance reports from Apple's MetricKit,</strong> which iOS puts together about once a day, and only if you've also allowed sharing with app developers (in the Settings app: Privacy &amp; Security &rsaquo; Analytics &amp; Improvements &rsaquo; Share With App Developers). They cover things like crashes, hangs, launch time, and battery and memory use.</li>
+      <li><strong>A daily tally of hiccups the app noticed,</strong> like the beer being drawn on its side while you held the phone upright, or a refill alert that never turned up. It's just counts, with the app version and iPhone model.</li>
+    </ul>
+    <p>Neither one carries your glass ID or anything else that says who you are. Help Improve is on by default in TestFlight beta builds and off by default in the App Store version, until you choose. Turn it off and nothing more goes by itself, and the app throws away any tally it hadn't sent yet.</p>
+
+    <h3>Where it goes, and for how long</h3>
+    <p>All of it goes, encrypted, to Double Beers' own server, which runs on Cloudflare. Only we can read it, and we use it only to find and fix problems. Each problem report and MetricKit report is deleted automatically after <strong>90 days</strong>, and a report's note stays in the report: it isn't copied anywhere else. Tallies are only ever kept as hourly and daily totals, by app version and iPhone model: the hourly ones for 120 days, the daily ones for about 13 months.</p>
+    <p>Want a report gone sooner? Email <a href="mailto:support@doublebeers.com?subject=Double%20Beers%3A%20delete%20my%20report">support@doublebeers.com</a> with its report number (or roughly when you sent it) and we'll delete it within 30 days.</p>
+
+    <h3>Your IP address</h3>
+    <p>Our server, and Cloudflare, which runs it, get your IP address with every request the app makes to it (a refill alert, a check-in, a report), the way any website does. It's used only to deliver the request and to limit how many come from one place, and we don't store it with anything you send: the limits count by a scrambled form of it, for a day at most. Cloudflare's request logs, which we use to spot trouble, may include it and are deleted within 7 days.</p>
+
+    <h2 id="never"><span class="n">7</span>What we never do</h2>
     <ul>
       <li>Show ads, or include any advertising, analytics or crash-reporting SDK. The app contains no third-party code.</li>
       <li>Track you across other companies' apps or websites, or use your data for advertising or marketing.</li>
@@ -176,7 +215,7 @@
       <li>Ask for your real name, email address or phone number inside the app.</li>
     </ul>
 
-    <h2 id="choices"><span class="n">7</span>Your choices</h2>
+    <h2 id="choices"><span class="n">8</span>Your choices</h2>
     <ul>
       <li><strong>Share My Empty Glass</strong> (in the app, Settings &rsaquo; Friends). Off (or Not Now, when the app first asks) means your glass never appears on the feed and nobody can refill it.
         <ul>
@@ -186,47 +225,51 @@
       </li>
       <li><strong>Hide</strong> (the <strong>&hellip;</strong> menu on a glass in Refill a Friend). Their glass leaves your feed and their refills no longer reach you. It's kept on your device only, and they aren't told. Unhide them in Settings &rsaquo; Friends &rsaquo; Hidden Drinkers.</li>
       <li><strong>Game Center.</strong> Sign out and you appear as &ldquo;A Drinker&rdquo;, and the app stops posting to leaderboards.</li>
-      <li><strong>iCloud.</strong> Sign out of iCloud (or turn off iCloud for Double Beers, where the Settings app lists it) and the app stops reading and writing the public database. Records already there stay until they're deleted (see <a href="#delete">section 9</a>).</li>
+      <li><strong>iCloud.</strong> Sign out of iCloud (or turn off iCloud for Double Beers, where the Settings app lists it) and the app stops reading and writing the public database. Records already there stay until they're deleted (see <a href="#delete">section 10</a>).</li>
+      <li><strong>Help Improve Double Beers</strong> (in the app, Settings &rsaquo; Help). Off means no crash, performance or hiccup reports go by themselves. A problem report still goes only when you send one.</li>
       <li><strong>Reset Stats</strong> (in the app, Settings &rsaquo; Stats). Sets beers finished back to zero, on your device and in your glass record. Game Center keeps your best Beers Finished score on its leaderboard.</li>
     </ul>
 
-    <h2 id="retention"><span class="n">8</span>How long it's kept</h2>
+    <h2 id="retention"><span class="n">9</span>How long it's kept</h2>
     <ul>
       <li><strong>On the feed:</strong> an empty glass appears at most 24 hours after it ran dry. It goes sooner if it's refilled or you pour a fresh one.</li>
-      <li><strong>In the database:</strong> glass and refill records don't expire on their own. They stay until they're deleted: by us when you ask (<a href="#delete">section 9</a>), or when we clear out old records, which we may do at any time. The app tries to remove refills once they've been delivered, but the database's permissions currently don't allow it.</li>
+      <li><strong>In the database:</strong> glass and refill records don't expire on their own. They stay until they're deleted: by us when you ask (<a href="#delete">section 10</a>), or when we clear out old records, which we may do at any time. The app tries to remove refills once they've been delivered, but the database's permissions currently don't allow it.</li>
+      <li><strong>Your push token:</strong> on our push server for up to 180 days after the app last checked in, and deleted as soon as you turn off Share My Empty Glass (<a href="#push">section 5</a>).</li>
+      <li><strong>Problem reports and MetricKit reports:</strong> 90 days on our server, then deleted automatically (<a href="#reports">section 6</a>). Hiccup tallies: hourly totals for 120 days, daily totals for about 13 months.</li>
       <li><strong>Deleting the app</strong> doesn't delete your records. Reinstalling picks up the same glass.</li>
     </ul>
 
-    <h2 id="delete"><span class="n">9</span>Deleting your data</h2>
+    <h2 id="delete"><span class="n">10</span>Deleting your data</h2>
     <p>Email <a href="mailto:support@doublebeers.com?subject=Double%20Beers%3A%20delete%20my%20data">support@doublebeers.com</a> with your Game Center nickname, and roughly when you last used Refill a Friend. We'll delete your glass record and the refill records that carry your nickname, and confirm by email, within 30 days. We'll only ask for more if we can't find you otherwise.</p>
-    <p>You can delete your glass record yourself: turn off Share My Empty Glass and the app deletes it (and tries again if it can't reach iCloud). Refill records you've sent stay until we delete them, so email us for those. If you turn sharing back on, the app writes a new glass record.</p>
+    <p>You can delete your glass record yourself: turn off Share My Empty Glass and the app deletes it (and tries again if it can't reach iCloud), and our push server deletes your push token. Refill records you've sent stay until we delete them, so email us for those. If you turn sharing back on, the app writes a new glass record.</p>
+    <p>To delete a problem report, email us its report number (or roughly when you sent it). Reports go by themselves after 90 days anyway.</p>
     <p>Everything kept on your device goes when you delete the app, apart from the keychain ID for your glass. You can clear your stats and settings at any time in the app's Settings.</p>
 
-    <h2 id="children"><span class="n">10</span>Children</h2>
+    <h2 id="children"><span class="n">11</span>Children</h2>
     <p>Double Beers isn't meant for children. We don't knowingly collect data from children under 13, or under the minimum age where they live. If you think a child's nickname is on the feed, email <a href="mailto:support@doublebeers.com">support@doublebeers.com</a> and we'll delete it.</p>
 
-    <h2 id="storage"><span class="n">11</span>Where it's stored, and security</h2>
+    <h2 id="storage"><span class="n">12</span>Where it's stored, and security</h2>
     <ul>
-      <li><strong>Where:</strong> Apple stores CloudKit data on its servers for us, and those servers may be outside your country.</li>
+      <li><strong>Where:</strong> Apple stores CloudKit data on its servers for us, and those servers may be outside your country. Push tokens, problem reports and diagnostics are stored on our server on Cloudflare's network, which may be outside your country too.</li>
       <li><strong>Who can change a record:</strong> only the iCloud account that created it. Nobody else can change your glass. A refill is a separate record that the refill's sender creates.</li>
       <li><strong>Who can read it:</strong> everyone using Double Beers can read these records (see <a href="#public">section 3</a>).</li>
-      <li><strong>In transit:</strong> data travels encrypted between the app and Apple's servers.</li>
+      <li><strong>In transit:</strong> data travels encrypted between the app and Apple's servers, and between the app and ours.</li>
     </ul>
 
-    <h2 id="rights"><span class="n">12</span>Your rights</h2>
+    <h2 id="rights"><span class="n">13</span>Your rights</h2>
     <p>Depending on where you live, you may have the right to ask for a copy of your data, to correct or delete it, or to object to how it's used. This includes the GDPR in the EU and UK and the CCPA/CPRA in California.</p>
     <ul>
       <li><strong>How to ask:</strong> email us. We'll answer within 30 days.</li>
-      <li><strong>Legal basis:</strong> we use this data only to run Refill a Friend and its leaderboards, a feature of the app you installed (our legitimate interest in providing it). Your glass is written only while Share My Empty Glass is on, and a refill only when you give one. You can object at any time: turn off Share My Empty Glass and the app deletes your glass record, sign out of iCloud to stop the app using the database at all, or email us to have your records deleted.</li>
+      <li><strong>Legal basis:</strong> we use this data only to run Refill a Friend and its leaderboards, a feature of the app you installed, and to find and fix problems with the app (our legitimate interest in providing it). A problem report goes only when you send it, and diagnostics only while Help Improve Double Beers is on. Your glass is written only while Share My Empty Glass is on, and a refill only when you give one. You can object at any time: turn off Share My Empty Glass and the app deletes your glass record, sign out of iCloud to stop the app using the database at all, or email us to have your records deleted.</li>
       <li><strong>Selling and sharing:</strong> we don't sell or &ldquo;share&rdquo; personal information as California law defines those terms.</li>
       <li><strong>Complaints:</strong> you can also complain to your local data protection authority.</li>
     </ul>
 
-    <h2 id="changes"><span class="n">13</span>Changes</h2>
+    <h2 id="changes"><span class="n">14</span>Changes</h2>
     <p>If what the app stores changes, we'll update this page and the date at the top before the new version ships, and mention it in the version's release notes.</p>
 
     <section class="card contact" aria-labelledby="contact">
-      <h2 id="contact" style="margin-top:0"><span class="n">14</span>Contact</h2>
+      <h2 id="contact" style="margin-top:0"><span class="n">15</span>Contact</h2>
       <p>Mitch Chaiet, developer of Double Beers</p>
       <a class="btn button" href="mailto:support@doublebeers.com">Email support@doublebeers.com</a>
       <p class="muted" style="margin-top:14px">Help with the app is on the <a href="/support/">support page</a>.</p>
